@@ -230,18 +230,71 @@
     }
 }
 
+        /* Гамбургер */
+        .hamburger {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #11998e;
+        }
+        
+        .links {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            padding: 1rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .links.active {
+            display: flex;
+        }
+        
+        .links a {
+            margin: 0.5rem 0;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* На десктопе — обычное меню */
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+            .links {
+                display: flex !important;
+                position: static;
+                flex-direction: row;
+                width: auto;
+                box-shadow: none;
+                padding: 0;
+            }
+            .links a {
+                margin: 0 0 0 2rem;
+                border: none;
+                padding: 0;
+            }
+        }
+
     </style>
 </head>
 <body>
 
     <!-- Навигация -->
-    <nav>
+        <nav>
         <div class="nav-container">
             <div class="logo">Blatboy.dev</div>
-            <div class="links">
-                <a href="#about">Обо мне</a>
-                <a href="#services">Услуги</a>
-                <a href="#contact">Контакты</a>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <div class="links" id="navLinks">
+                <a href="#about" onclick="closeMenu()">Обо мне</a>
+                <a href="#services" onclick="closeMenu()">Услуги</a>
+                <a href="#contact" onclick="closeMenu()">Контакты</a>
             </div>
         </div>
     </nav>
@@ -311,8 +364,8 @@
         © 2026 Blatboy. Создано с помощью Vibe Coding.
     </footer>
 
-    <script>
-        // Плавная прокрутка при клике на ссылки меню
+        <script>
+        // Плавная прокрутка
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -321,7 +374,18 @@
                 });
             });
         });
+
+        // Открыть/закрыть меню
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Закрыть меню при клике на ссылку
+        function closeMenu() {
+            document.getElementById('navLinks').classList.remove('active');
+        }
     </script>
+
 
 </body>
 </html>
