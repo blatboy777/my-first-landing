@@ -311,5 +311,17 @@
         © 2026 Blatboy. Создано с помощью Vibe Coding.
     </footer>
 
+    <script>
+        // Плавная прокрутка при клике на ссылки меню
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
