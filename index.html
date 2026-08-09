@@ -35,6 +35,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         
         nav .logo {
@@ -207,29 +208,7 @@
             color: #888;
             font-size: 0.9rem;
         }
-        /* АДАПТИВНОСТЬ */
-@media (min-width: 768px) {
-    .about-content {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .services-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .contact-links {
-        flex-direction: row;
-        justify-content: center;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-    .about-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
+        
         /* Гамбургер */
         .hamburger {
             display: block;
@@ -262,8 +241,18 @@
             border-bottom: 1px solid #eee;
         }
         
-        /* На десктопе — обычное меню */
+        /* АДАПТИВНОСТЬ */
         @media (min-width: 768px) {
+            .about-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .contact-links {
+                flex-direction: row;
+                justify-content: center;
+            }
             .hamburger {
                 display: none;
             }
@@ -281,13 +270,21 @@
                 padding: 0;
             }
         }
-
+        
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Навигация -->
-        <nav>
+    <nav>
         <div class="nav-container">
             <div class="logo">Blatboy.dev</div>
             <button class="hamburger" onclick="toggleMenu()">☰</button>
@@ -364,7 +361,7 @@
         © 2026 Blatboy. Создано с помощью Vibe Coding.
     </footer>
 
-        <script>
+    <script>
         // Плавная прокрутка
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -385,7 +382,6 @@
             document.getElementById('navLinks').classList.remove('active');
         }
     </script>
-
 
 </body>
 </html>
