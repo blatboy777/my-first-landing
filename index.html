@@ -28,9 +28,9 @@
         .links a{margin:.5rem 0;padding:.5rem 0;text-decoration:none;color:#555;font-weight:500;border-bottom:1px solid #eee;transition:color .3s}
         .links a:hover{color:var(--primary)}
         .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);color:#fff;text-align:center;padding:6rem 2rem 2rem}
-        .hero h1{font-size:2.8rem;margin-bottom:1rem;text-shadow:2px 2px 4px rgba(0,0,0,.2)}
-        .hero p{font-size:1.2rem;opacity:.95;max-width:600px;margin:0 auto 2rem}
-        .btn{display:inline-block;padding:15px 40px;background:#fff;color:var(--primary);text-decoration:none;border-radius:50px;font-weight:bold;transition:transform .3s,box-shadow .3s}
+        .hero h1{font-size:2.8rem;margin-bottom:1rem;text-shadow:2px 2px 4px rgba(0,0,0,.2);animation:fadeInDown 1s ease forwards}
+        .hero p{font-size:1.2rem;opacity:0;max-width:600px;margin:0 auto 2rem;animation:fadeInUp 1s ease .3s forwards}
+        .btn{display:inline-block;padding:15px 40px;background:#fff;color:var(--primary);text-decoration:none;border-radius:50px;font-weight:bold;transition:transform .3s,box-shadow .3s;opacity:0;animation:scaleIn .8s ease .6s forwards}
         .btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
         section{padding:5rem 2rem;max-width:1200px;margin:0 auto}
         section h2{font-size:2.3rem;text-align:center;margin-bottom:3rem;color:#222}
@@ -68,6 +68,20 @@
         footer{text-align:center;padding:2rem;background:#111;color:#888;font-size:.9rem}
         [data-i18n]{transition:opacity .2s}
         .fade{opacity:0}
+        /* ===== АНИМАЦИИ ===== */
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeInDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes scaleIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+        .animate{opacity:0}
+        .animate.visible{animation-fill-mode:forwards}
+        .anim-fade-up.visible{animation:fadeInUp .8s ease forwards}
+        .anim-fade-down.visible{animation:fadeInDown .8s ease forwards}
+        .anim-scale.visible{animation:scaleIn .7s ease forwards}
+        .delay-1{animation-delay:.1s}
+        .delay-2{animation-delay:.2s}
+        .delay-3{animation-delay:.3s}
+        .delay-4{animation-delay:.4s}
+        .delay-5{animation-delay:.5s}
         @media(min-width:768px){.about-content{grid-template-columns:repeat(3,1fr)}.services-grid{grid-template-columns:repeat(3,1fr)}.projects-grid{grid-template-columns:repeat(3,1fr)}.contact-links{flex-direction:row;justify-content:center}.hamburger{display:none}.links{display:flex!important;position:static;flex-direction:row;width:auto;box-shadow:none;padding:0}.links a{margin:0 0 0 2rem;border:none;padding:0}.hero h1{font-size:3.5rem}}
         @media(min-width:768px)and (max-width:1024px){.about-content{grid-template-columns:repeat(2,1fr)}.services-grid{grid-template-columns:repeat(2,1fr)}}
     </style>
@@ -105,17 +119,17 @@
     </section>
 
     <section class="about" id="about">
-        <h2 data-i18n="about_title"></h2>
+        <h2 class="animate anim-fade-down" data-i18n="about_title"></h2>
         <div class="about-content">
-            <div class="about-card">
+            <div class="about-card animate anim-fade-up delay-1">
                 <h3 data-i18n="about_card1_title"></h3>
                 <p data-i18n="about_card1_text"></p>
             </div>
-            <div class="about-card">
+            <div class="about-card animate anim-fade-up delay-2">
                 <h3 data-i18n="about_card2_title"></h3>
                 <p data-i18n="about_card2_text"></p>
             </div>
-            <div class="about-card">
+            <div class="about-card animate anim-fade-up delay-3">
                 <h3 data-i18n="about_card3_title"></h3>
                 <p data-i18n="about_card3_text"></p>
             </div>
@@ -123,19 +137,19 @@
     </section>
 
     <section id="services">
-        <h2 data-i18n="services_title"></h2>
+        <h2 class="animate anim-fade-down" data-i18n="services_title"></h2>
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card animate anim-scale delay-1">
                 <div class="icon">🎨</div>
                 <h3 data-i18n="service1_title"></h3>
                 <p data-i18n="service1_text"></p>
             </div>
-            <div class="service-card">
+            <div class="service-card animate anim-scale delay-2">
                 <div class="icon">🛒</div>
                 <h3 data-i18n="service2_title"></h3>
                 <p data-i18n="service2_text"></p>
             </div>
-            <div class="service-card">
+            <div class="service-card animate anim-scale delay-3">
                 <div class="icon">⚡</div>
                 <h3 data-i18n="service3_title"></h3>
                 <p data-i18n="service3_text"></p>
@@ -144,9 +158,9 @@
     </section>
 
     <section id="projects" class="projects">
-        <h2 data-i18n="projects_title"></h2>
+        <h2 class="animate anim-fade-down" data-i18n="projects_title"></h2>
         <div class="projects-grid">
-            <div class="project-card">
+            <div class="project-card animate anim-fade-up delay-1">
                 <div class="project-preview">🏗️</div>
                 <div class="project-content">
                     <h3>NordBuild</h3>
@@ -159,7 +173,7 @@
                     <a href="https://blatboy777.github.io/nordbuild-landing/" target="_blank" class="project-link" data-i18n="project_view"></a>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card animate anim-fade-up delay-2">
                 <div class="project-preview">💼</div>
                 <div class="project-content">
                     <h3>Blatboy Portfolio</h3>
@@ -173,7 +187,7 @@
                     <a href="#" class="project-link" data-i18n="project_view"></a>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card animate anim-fade-up delay-3">
                 <div class="project-preview">🚀</div>
                 <div class="project-content">
                     <h3 data-i18n="project3_title"></h3>
@@ -189,11 +203,11 @@
     </section>
 
     <section class="contact" id="contact">
-        <h2 data-i18n="contact_title"></h2>
-        <p data-i18n="contact_subtitle"></p>
+        <h2 class="animate anim-fade-down" data-i18n="contact_title"></h2>
+        <p class="animate anim-fade-up delay-1" data-i18n="contact_subtitle"></p>
         
         <!-- ФОРМА FORMSPREE -->
-        <form class="contact-form" action="https://formspree.io/f/xvkpkzpk" method="POST">
+        <form class="contact-form animate anim-scale delay-2" action="https://formspree.io/f/xvkpkzpk" method="POST">
             <input type="text" name="name" placeholder="Ваше имя / Your name" required>
             <input type="email" name="email" placeholder="Email" required>
             <textarea name="message" placeholder="Сообщение / Message" required></textarea>
@@ -355,6 +369,17 @@
         document.addEventListener('click', e => {
             if (!e.target.closest('.lang-switcher')) document.getElementById('langDropdown').classList.remove('show');
         });
+
+        // Анимации при скролле
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
 
         updateText();
     </script>
