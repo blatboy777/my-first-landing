@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blatboy — веб-разработчик. Создаю современные лендинги и сайты-визитки на HTML/CSS/JS. Адаптивно, с анимациями, быстро.">
+    <meta name="keywords" content="веб-разработчик, лендинг, сайт визитка, html, css, javascript, адаптивная верстка">
+    <meta name="author" content="Blatboy">
+    <meta property="og:title" content="Blatboy — Web Developer">
+    <meta property="og:description" content="Создаю современные сайты с помощью AI. Лендинги, адаптивная верстка, анимации.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://blatboy777.github.io/">
+    <meta property="og:image" content="https://blatboy777.github.io/preview.png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
     <title>Blatboy — Web Developer</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
@@ -28,9 +37,9 @@
         .links a{margin:.5rem 0;padding:.5rem 0;text-decoration:none;color:#555;font-weight:500;border-bottom:1px solid #eee;transition:color .3s}
         .links a:hover{color:var(--primary)}
         .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);color:#fff;text-align:center;padding:6rem 2rem 2rem}
-        .hero h1{font-size:2.8rem;margin-bottom:1rem;text-shadow:2px 2px 4px rgba(0,0,0,.2);animation:fadeInDown 1s ease forwards}
-        .hero p{font-size:1.2rem;opacity:0;max-width:600px;margin:0 auto 2rem;animation:fadeInUp 1s ease .3s forwards}
-        .btn{display:inline-block;padding:15px 40px;background:#fff;color:var(--primary);text-decoration:none;border-radius:50px;font-weight:bold;transition:transform .3s,box-shadow .3s;opacity:0;animation:scaleIn .8s ease .6s forwards}
+        .hero h1{font-size:2.8rem;margin-bottom:1rem;text-shadow:2px 2px 4px rgba(0,0,0,.2)}
+        .hero p{font-size:1.2rem;opacity:.95;max-width:600px;margin:0 auto 2rem}
+        .btn{display:inline-block;padding:15px 40px;background:#fff;color:var(--primary);text-decoration:none;border-radius:50px;font-weight:bold;transition:transform .3s,box-shadow .3s}
         .btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
         section{padding:5rem 2rem;max-width:1200px;margin:0 auto}
         section h2{font-size:2.3rem;text-align:center;margin-bottom:3rem;color:#222}
@@ -72,16 +81,40 @@
         @keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
         @keyframes fadeInDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
         @keyframes scaleIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+        @keyframes slideInLeft{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:translateX(0)}}
+        @keyframes slideInRight{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)}}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
         .animate{opacity:0}
         .animate.visible{animation-fill-mode:forwards}
         .anim-fade-up.visible{animation:fadeInUp .8s ease forwards}
         .anim-fade-down.visible{animation:fadeInDown .8s ease forwards}
         .anim-scale.visible{animation:scaleIn .7s ease forwards}
+        .anim-left.visible{animation:slideInLeft .8s ease forwards}
+        .anim-right.visible{animation:slideInRight .8s ease forwards}
+        .anim-float{animation:float 3s ease-in-out infinite}
         .delay-1{animation-delay:.1s}
         .delay-2{animation-delay:.2s}
         .delay-3{animation-delay:.3s}
         .delay-4{animation-delay:.4s}
         .delay-5{animation-delay:.5s}
+        .hero h1{animation:fadeInDown 1s ease forwards}
+        .hero p{animation:fadeInUp 1s ease .3s forwards;opacity:0}
+        .hero .btn{animation:scaleIn .8s ease .6s forwards;opacity:0}
+        /* Плавающие частицы Hero */
+        .hero{position:relative;overflow:hidden}
+        .particle{position:absolute;border-radius:50%;background:rgba(255,255,255,.15);animation:floatParticle 8s infinite ease-in-out}
+        @keyframes floatParticle{0%,100%{transform:translateY(0) translateX(0)}25%{transform:translateY(-20px) translateX(10px)}50%{transform:translateY(10px) translateX(-10px)}75%{transform:translateY(-10px) translateX(5px)}}
+        .p1{width:10px;height:10px;top:20%;left:10%;animation-duration:6s}
+        .p2{width:15px;height:15px;top:60%;left:80%;animation-duration:8s;animation-delay:1s}
+        .p3{width:8px;height:8px;top:40%;left:50%;animation-duration:7s;animation-delay:2s}
+        .p4{width:12px;height:12px;top:80%;left:30%;animation-duration:9s;animation-delay:3s}
+        .p5{width:6px;height:6px;top:15%;left:70%;animation-duration:5s;animation-delay:4s}
+        /* Активная навигация */
+        .links a.active{color:var(--primary);font-weight:700}
+        /* Кнопка наверх */
+        .to-top{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:var(--primary);color:#fff;border:none;font-size:1.5rem;cursor:pointer;box-shadow:0 5px 20px rgba(0,0,0,.2);opacity:0;visibility:hidden;transition:all .3s;z-index:999;display:flex;align-items:center;justify-content:center}
+        .to-top.show{opacity:1;visibility:visible}
+        .to-top:hover{background:var(--accent);transform:translateY(-3px)}
         @media(min-width:768px){.about-content{grid-template-columns:repeat(3,1fr)}.services-grid{grid-template-columns:repeat(3,1fr)}.projects-grid{grid-template-columns:repeat(3,1fr)}.contact-links{flex-direction:row;justify-content:center}.hamburger{display:none}.links{display:flex!important;position:static;flex-direction:row;width:auto;box-shadow:none;padding:0}.links a{margin:0 0 0 2rem;border:none;padding:0}.hero h1{font-size:3.5rem}}
         @media(min-width:768px)and (max-width:1024px){.about-content{grid-template-columns:repeat(2,1fr)}.services-grid{grid-template-columns:repeat(2,1fr)}}
     </style>
@@ -111,6 +144,11 @@
     </nav>
 
     <section class="hero">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+        <div class="particle p5"></div>
         <div>
             <h1 data-i18n="hero_title"></h1>
             <p data-i18n="hero_subtitle"></p>
@@ -224,6 +262,8 @@
     <footer>
         <span data-i18n="footer"></span>
     </footer>
+
+    <button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
     <script>
         const i18n = {
@@ -380,6 +420,33 @@
         }, { threshold: 0.15 });
 
         document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+        // Активная навигация при скролле
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.links a[href^="#"]');
+        const toTopBtn = document.getElementById('toTop');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+            // Кнопка наверх
+            if (window.scrollY > 500) {
+                toTopBtn.classList.add('show');
+            } else {
+                toTopBtn.classList.remove('show');
+            }
+        });
 
         updateText();
     </script>
