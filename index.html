@@ -1,430 +1,638 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Blatboy — веб-разработчик. Создаю современные лендинги и сайты-визитки на HTML/CSS/JS. Адаптивно, с анимациями, быстро.">
-    <meta name="keywords" content="веб-разработчик, лендинг, сайт визитка, html, css, javascript, адаптивная верстка">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Blatboy — веб-разработчик. Создаю современные лендинги и сайты с помощью AI. Адаптивный дизайн, анимации, быстрая загрузка.">
+    <meta name="keywords" content="веб-разработчик, лендинг, сайт визитка, html, css, javascript, адаптивная верстка, AI">
     <meta name="author" content="Blatboy">
-    <meta property="og:title" content="Blatboy — Web Developer">
-    <meta property="og:description" content="Создаю современные сайты с помощью AI. Лендинги, адаптивная верстка, анимации.">
+    <meta name="robots" content="all">
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://blatboy777.github.io/">
-    <meta property="og:image" content="https://blatboy777.github.io/preview.png">
+    <meta property="og:site_name" content="Blatboy — Web Developer">
+    <meta property="og:title" content="Blatboy — веб-разработчик">
+    <meta property="og:description" content="Создаю современные лендинги и сайты с помощью AI. Адаптивный дизайн, анимации, быстрая загрузка.">
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
     <title>Blatboy — Web Developer</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--primary:#11998e;--accent:#38ef7d;--dark:#1a1a2e;--text:#333;--light:#f8f9fa}
-        body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);line-height:1.6}
-        nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);padding:1rem 2rem;z-index:1000;box-shadow:0 2px 20px rgba(0,0,0,.1)}
-        .nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;position:relative}
-        .logo{font-weight:bold;font-size:1.3rem;color:var(--primary)}
-        .nav-right{display:flex;align-items:center;gap:1rem}
-        .lang-switcher{position:relative}
-        .lang-btn{background:none;border:2px solid var(--primary);color:var(--primary);padding:6px 14px;border-radius:20px;font-weight:600;cursor:pointer;font-size:.85rem;display:flex;align-items:center;gap:6px;transition:all .3s}
-        .lang-btn:hover{background:var(--primary);color:#fff}
-        .lang-dropdown{display:none;position:absolute;top:45px;right:0;background:#fff;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.15);overflow:hidden;min-width:140px;z-index:1001}
-        .lang-dropdown.show{display:block}
-        .lang-option{padding:12px 16px;cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:10px;font-size:.9rem;border-bottom:1px solid #f0f0f0}
-        .lang-option:last-child{border:none}
-        .lang-option:hover{background:var(--light)}
-        .lang-option.active{background:var(--primary);color:#fff}
-        .flag{font-size:1.1rem}
-        .hamburger{display:block;background:none;border:none;font-size:1.8rem;cursor:pointer;color:var(--primary)}
-        .links{display:none;position:absolute;top:60px;left:0;width:100%;background:#fff;flex-direction:column;padding:1rem 2rem;box-shadow:0 10px 30px rgba(0,0,0,.1)}
-        .links.active{display:flex}
-        .links a{margin:.5rem 0;padding:.5rem 0;text-decoration:none;color:#555;font-weight:500;border-bottom:1px solid #eee;transition:color .3s}
-        .links a:hover{color:var(--primary)}
-        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);color:#fff;text-align:center;padding:6rem 2rem 2rem}
-        .hero h1{font-size:2.8rem;margin-bottom:1rem;text-shadow:2px 2px 4px rgba(0,0,0,.2)}
-        .hero p{font-size:1.2rem;opacity:.95;max-width:600px;margin:0 auto 2rem}
-        .btn{display:inline-block;padding:15px 40px;background:#fff;color:var(--primary);text-decoration:none;border-radius:50px;font-weight:bold;transition:transform .3s,box-shadow .3s}
-        .btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
-        section{padding:5rem 2rem;max-width:1200px;margin:0 auto}
-        section h2{font-size:2.3rem;text-align:center;margin-bottom:3rem;color:#222}
-        .about{background:var(--light)}
-        .about-content{display:grid;grid-template-columns:1fr;gap:2rem;text-align:center}
-        .about-card{background:#fff;padding:2rem;border-radius:20px;box-shadow:0 5px 30px rgba(0,0,0,.08)}
-        .about-card h3{color:var(--primary);margin-bottom:1rem;font-size:1.2rem}
-        .services-grid{display:grid;grid-template-columns:1fr;gap:2rem}
-        .service-card{background:#fff;border:2px solid #e9ecef;padding:2.5rem;border-radius:20px;text-align:center;transition:transform .3s,border-color .3s}
-        .service-card:hover{transform:translateY(-5px);border-color:var(--primary)}
-        .service-card .icon{font-size:3rem;margin-bottom:1rem}
-        .service-card h3{margin-bottom:1rem;color:#222}
-        .contact{background:var(--dark);color:#fff;text-align:center}
-        .projects{padding:5rem 2rem;max-width:1200px;margin:0 auto}
-        .projects-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:2rem}
-        .project-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 5px 30px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s}
-        .project-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.15)}
-        .project-preview{height:200px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);color:#fff}
-        .project-content{padding:2rem}
-        .project-content h3{margin-bottom:.5rem;color:#222;font-size:1.3rem}
-        .project-content p{font-size:.95rem;color:#666;margin-bottom:1rem;line-height:1.6}
-        .project-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
-        .project-tags span{background:var(--light);color:var(--primary);padding:5px 12px;border-radius:20px;font-size:.8rem;font-weight:600}
-        .project-link{display:inline-block;padding:12px 28px;background:var(--primary);color:#fff;text-decoration:none;border-radius:50px;font-size:.95rem;font-weight:600;transition:background .3s}
-        .project-link:hover{background:var(--accent);color:var(--dark)}
-        .contact h2{color:#fff}
-        .contact-form{max-width:500px;margin:2rem auto;display:flex;flex-direction:column;gap:1rem}
-        .contact-form input,.contact-form textarea{padding:14px;border:none;border-radius:10px;font-family:inherit;font-size:1rem}
-        .contact-form textarea{min-height:120px;resize:vertical}
-        .contact-form button{padding:14px;background:var(--accent);color:var(--dark);border:none;border-radius:50px;font-size:1rem;font-weight:bold;cursor:pointer;transition:all .3s}
-        .contact-form button:hover{background:#fff}
-        .contact-links{display:flex;flex-direction:column;gap:1rem;align-items:center;margin-top:2rem}
-        .contact-links a{color:var(--accent);text-decoration:none;font-size:1.1rem;padding:10px 30px;border:2px solid var(--accent);border-radius:50px;transition:all .3s}
-        .contact-links a:hover{background:var(--accent);color:var(--dark)}
-        footer{text-align:center;padding:2rem;background:#111;color:#888;font-size:.9rem}
-        [data-i18n]{transition:opacity .2s}
-        .fade{opacity:0}
-        /* ===== АНИМАЦИИ ===== */
-        @keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes fadeInDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes scaleIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-        @keyframes slideInLeft{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:translateX(0)}}
-        @keyframes slideInRight{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)}}
-        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-        .animate{opacity:0}
-        .animate.visible{animation-fill-mode:forwards}
-        .anim-fade-up.visible{animation:fadeInUp .8s ease forwards}
-        .anim-fade-down.visible{animation:fadeInDown .8s ease forwards}
-        .anim-scale.visible{animation:scaleIn .7s ease forwards}
-        .anim-left.visible{animation:slideInLeft .8s ease forwards}
-        .anim-right.visible{animation:slideInRight .8s ease forwards}
-        .anim-float{animation:float 3s ease-in-out infinite}
-        .delay-1{animation-delay:.1s}
-        .delay-2{animation-delay:.2s}
-        .delay-3{animation-delay:.3s}
-        .delay-4{animation-delay:.4s}
-        .delay-5{animation-delay:.5s}
-        .hero h1{animation:fadeInDown 1s ease forwards}
-        .hero p{animation:fadeInUp 1s ease .3s forwards;opacity:0}
-        .hero .btn{animation:scaleIn .8s ease .6s forwards;opacity:0}
-        /* Плавающие частицы Hero */
-        .hero{position:relative;overflow:hidden}
-        .particle{position:absolute;border-radius:50%;background:rgba(255,255,255,.15);animation:floatParticle 8s infinite ease-in-out}
-        @keyframes floatParticle{0%,100%{transform:translateY(0) translateX(0)}25%{transform:translateY(-20px) translateX(10px)}50%{transform:translateY(10px) translateX(-10px)}75%{transform:translateY(-10px) translateX(5px)}}
-        .p1{width:10px;height:10px;top:20%;left:10%;animation-duration:6s}
-        .p2{width:15px;height:15px;top:60%;left:80%;animation-duration:8s;animation-delay:1s}
-        .p3{width:8px;height:8px;top:40%;left:50%;animation-duration:7s;animation-delay:2s}
-        .p4{width:12px;height:12px;top:80%;left:30%;animation-duration:9s;animation-delay:3s}
-        .p5{width:6px;height:6px;top:15%;left:70%;animation-duration:5s;animation-delay:4s}
-        /* Активная навигация */
-        .links a.active{color:var(--primary);font-weight:700}
-        /* Кнопка наверх */
-        .to-top{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:var(--primary);color:#fff;border:none;font-size:1.5rem;cursor:pointer;box-shadow:0 5px 20px rgba(0,0,0,.2);opacity:0;visibility:hidden;transition:all .3s;z-index:999;display:flex;align-items:center;justify-content:center}
-        .to-top.show{opacity:1;visibility:visible}
-        .to-top:hover{background:var(--accent);transform:translateY(-3px)}
-        @media(min-width:768px){.about-content{grid-template-columns:repeat(3,1fr)}.services-grid{grid-template-columns:repeat(3,1fr)}.projects-grid{grid-template-columns:repeat(3,1fr)}.contact-links{flex-direction:row;justify-content:center}.hamburger{display:none}.links{display:flex!important;position:static;flex-direction:row;width:auto;box-shadow:none;padding:0}.links a{margin:0 0 0 2rem;border:none;padding:0}.hero h1{font-size:3.5rem}}
-        @media(min-width:768px)and (max-width:1024px){.about-content{grid-template-columns:repeat(2,1fr)}.services-grid{grid-template-columns:repeat(2,1fr)}}
+        :root {
+            --primary: #11998e;
+            --accent: #38ef7d;
+            --dark: #1a1a2e;
+            --text: #333;
+            --light: #f8f9fa;
+            --border-radius: 20px;
+        }
+
+        * {
+            font-family: 'Ubuntu', system-ui, sans-serif;
+        }
+
+        body {
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary) !important;
+        }
+
+        .nav-link {
+            color: #555 !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: var(--primary);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #fff;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        section h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* About Cards */
+        .about-section {
+            background: var(--light);
+        }
+
+        .card-custom {
+            background: #fff;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-custom h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .card-custom p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background: #fff;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            animation: scaleIn 0.7s ease-out;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 40px rgba(17, 153, 142, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Projects */
+        .projects-section {
+            background: var(--light);
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: #fff;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #222;
+        }
+
+        .project-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: var(--light);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: #fff;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Ubuntu', system-ui, sans-serif;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            padding: 14px;
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .contact-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 30px;
+            border: 2px solid var(--accent);
+            border-radius: 50px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .contact-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #111;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Scroll Animation Observer */
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 0;
+            }
+
+            .nav-link {
+                margin: 0.5rem 0;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Blatboy.dev</div>
-            <div class="nav-right">
-                <div class="lang-switcher">
-                    <button class="lang-btn" onclick="toggleLang()"><span id="currentLang">🇷🇺 RU</span> ▼</button>
-                    <div class="lang-dropdown" id="langDropdown">
-                        <div class="lang-option" onclick="setLang('ru')"><span class="flag">🇷🇺</span> Русский</div>
-                        <div class="lang-option" onclick="setLang('en')"><span class="flag">🇬🇧</span> English</div>
-                        <div class="lang-option" onclick="setLang('es')"><span class="flag">🇪🇸</span> Español</div>
-                    </div>
-                </div>
-                <button class="hamburger" onclick="toggleMenu()">☰</button>
-                <div class="links" id="navLinks">
-                    <a href="#about" onclick="closeMenu()" data-i18n="nav_about"></a>
-                    <a href="#services" onclick="closeMenu()" data-i18n="nav_services"></a>
-                    <a href="#projects" onclick="closeMenu()" data-i18n="nav_projects"></a>
-                    <a href="#contact" onclick="closeMenu()" data-i18n="nav_contact"></a>
-                </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-lg">
+            <a class="navbar-brand" href="#">Blatboy.dev</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">Обо мне</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Проекты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
+                </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="particle p1"></div>
-        <div class="particle p2"></div>
-        <div class="particle p3"></div>
-        <div class="particle p4"></div>
-        <div class="particle p5"></div>
-        <div>
-            <h1 data-i18n="hero_title"></h1>
-            <p data-i18n="hero_subtitle"></p>
-            <a href="#contact" class="btn" data-i18n="hero_cta"></a>
+        <div class="hero-content">
+            <h1>Я — веб-разработчик</h1>
+            <p>Создаю современные лендинги и сайты с помощью AI. Адаптивный дизайн, плавные анимации, быстрая загрузка — всё что нужно для успеха вашего проекта.</p>
+            <a href="#contact" class="btn btn-primary">Связаться со мной</a>
         </div>
     </section>
 
-    <section class="about" id="about">
-        <h2 class="animate anim-fade-down" data-i18n="about_title"></h2>
-        <div class="about-content">
-            <div class="about-card animate anim-fade-up delay-1">
-                <h3 data-i18n="about_card1_title"></h3>
-                <p data-i18n="about_card1_text"></p>
-            </div>
-            <div class="about-card animate anim-fade-up delay-2">
-                <h3 data-i18n="about_card2_title"></h3>
-                <p data-i18n="about_card2_text"></p>
-            </div>
-            <div class="about-card animate anim-fade-up delay-3">
-                <h3 data-i18n="about_card3_title"></h3>
-                <p data-i18n="about_card3_text"></p>
-            </div>
-        </div>
-    </section>
-
-    <section id="services">
-        <h2 class="animate anim-fade-down" data-i18n="services_title"></h2>
-        <div class="services-grid">
-            <div class="service-card animate anim-scale delay-1">
-                <div class="icon">🎨</div>
-                <h3 data-i18n="service1_title"></h3>
-                <p data-i18n="service1_text"></p>
-            </div>
-            <div class="service-card animate anim-scale delay-2">
-                <div class="icon">🛒</div>
-                <h3 data-i18n="service2_title"></h3>
-                <p data-i18n="service2_text"></p>
-            </div>
-            <div class="service-card animate anim-scale delay-3">
-                <div class="icon">⚡</div>
-                <h3 data-i18n="service3_title"></h3>
-                <p data-i18n="service3_text"></p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="projects">
-        <h2 class="animate anim-fade-down" data-i18n="projects_title"></h2>
-        <div class="projects-grid">
-            <div class="project-card animate anim-fade-up delay-1">
-                <div class="project-preview">🏗️</div>
-                <div class="project-content">
-                    <h3>NordBuild</h3>
-                    <p data-i18n="project1_desc"></p>
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>Responsive</span>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container-lg">
+            <h2>Обо мне</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card-custom animate-on-scroll">
+                        <h3>🚀 Vibe Coding</h3>
+                        <p>Использую AI для быстрой разработки. То, что раньше занимало недели, теперь делается за часы.</p>
                     </div>
-                    <a href="https://blatboy777.github.io/nordbuild-landing/" target="_blank" class="project-link" data-i18n="project_view"></a>
                 </div>
-            </div>
-            <div class="project-card animate anim-fade-up delay-2">
-                <div class="project-preview">💼</div>
-                <div class="project-content">
-                    <h3>Blatboy Portfolio</h3>
-                    <p data-i18n="project2_desc"></p>
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JS</span>
-                        <span>i18n</span>
+                <div class="col-md-4">
+                    <div class="card-custom animate-on-scroll">
+                        <h3>💻 MacBook разработка</h3>
+                        <p>Работаю на MacBook Pro. Мощный инструмент для быстрой и эффективной разработки.</p>
                     </div>
-                    <a href="#" class="project-link" data-i18n="project_view"></a>
                 </div>
-            </div>
-            <div class="project-card animate anim-fade-up delay-3">
-                <div class="project-preview">🚀</div>
-                <div class="project-content">
-                    <h3 data-i18n="project3_title"></h3>
-                    <p data-i18n="project3_desc"></p>
-                    <div class="project-tags">
-                        <span>React</span>
-                        <span>Coming Soon</span>
+                <div class="col-md-4">
+                    <div class="card-custom animate-on-scroll">
+                        <h3>🌍 Международный рынок</h3>
+                        <p>Готовлю портфолио для работы с европейскими клиентами. Английский уровня B1.</p>
                     </div>
-                    <span class="project-link" style="opacity:.6;cursor:default">Soon</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact" id="contact">
-        <h2 class="animate anim-fade-down" data-i18n="contact_title"></h2>
-        <p class="animate anim-fade-up delay-1" data-i18n="contact_subtitle"></p>
-        
-        <!-- ФОРМА FORMSPREE -->
-        <form class="contact-form animate anim-scale delay-2" action="https://formspree.io/f/xvkpkzpk" method="POST">
-            <input type="text" name="name" placeholder="Ваше имя / Your name" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <textarea name="message" placeholder="Сообщение / Message" required></textarea>
-            <button type="submit" data-i18n="form_submit"></button>
-        </form>
-        
-        <div class="contact-links">
-            <a href="https://github.com/blatboy777" target="_blank">GitHub</a>
-            <a href="mailto:nov76246@gmail.com">Email</a>
-            <a href="https://t.me/Blatboy_777" target="_blank">Telegram</a>
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container-lg">
+            <h2>Услуги</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card animate-on-scroll">
+                        <span class="service-icon">🎨</span>
+                        <h3>Лендинги</h3>
+                        <p>Современные одностраничные сайты для бизнеса, продуктов и услуг. Адаптивный дизайн, быстрая загрузка.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card animate-on-scroll">
+                        <span class="service-icon">🛒</span>
+                        <h3>Многостраничные сайты</h3>
+                        <p>Полноценные сайты с несколькими страницами: главная, о компании, услуги, контакты, блог.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card animate-on-scroll">
+                        <span class="service-icon">⚡</span>
+                        <h3>Доработка сайтов</h3>
+                        <p>Добавлю новые секции, изменю дизайн, оптимизирую скорость загрузки вашего существующего сайта.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container-lg">
+            <h2>Мои проекты</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="project-card animate-on-scroll">
+                        <div class="project-image">🏗️</div>
+                        <div class="project-content">
+                            <h3>NordBuild</h3>
+                            <p>Сайт строительной компании. Современный дизайн, адаптивная вёрстка, многоязычность.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag">CSS</span>
+                                <span class="project-tag">Responsive</span>
+                            </div>
+                            <a href="https://blatboy777.github.io/nordbuild-landing/" target="_blank" class="project-link">Посмотреть сайт</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="project-card animate-on-scroll">
+                        <div class="project-image">💼</div>
+                        <div class="project-content">
+                            <h3>Портфолио</h3>
+                            <p>Личный сайт-портфолио с поддержкой трёх языков, плавной анимацией и мобильным меню.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag">CSS</span>
+                                <span class="project-tag">JS</span>
+                                <span class="project-tag">i18n</span>
+                            </div>
+                            <a href="#" class="project-link">Посмотреть сайт</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="project-card animate-on-scroll">
+                        <div class="project-image">🚀</div>
+                        <div class="project-content">
+                            <h3>Следующий проект</h3>
+                            <p>Готовлю новый проект для портфолио с использованием современных технологий.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">Coming Soon</span>
+                            </div>
+                            <span class="project-link" style="opacity:0.6;cursor:default">Скоро</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container-lg">
+            <h2>Связаться со мной</h2>
+            <p style="opacity: 0.9; margin-bottom: 2rem;">Открыт для сотрудничества и новых проектов</p>
+
+            <form class="contact-form" action="https://formspree.io/f/xvkpkzpk" method="POST">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Сообщение" required></textarea>
+                <button type="submit">Отправить сообщение</button>
+            </form>
+
+            <div class="contact-links">
+                <a href="https://github.com/blatboy777" target="_blank">GitHub</a>
+                <a href="mailto:nov76246@gmail.com">Email</a>
+                <a href="https://t.me/Blatboy_777" target="_blank">Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <span data-i18n="footer"></span>
+        <p>&copy; 2026 Blatboy. Создано с помощью Vibe Coding.</p>
     </footer>
 
-    <button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Scroll Animation -->
     <script>
-        const i18n = {
-            ru: {
-                nav_about: 'Обо мне', nav_services: 'Услуги', nav_projects: 'Проекты', nav_contact: 'Контакты',
-                hero_title: 'Я — будущий веб-разработчик',
-                hero_subtitle: 'Создаю современные сайты с помощью AI. Учусь вайбкодингу, чтобы делать проекты для клиентов по всему миру.',
-                hero_cta: 'Связаться со мной',
-                about_title: 'Обо мне',
-                about_card1_title: '🚀 Vibe Coding',
-                about_card1_text: 'Использую AI для быстрой разработки. То, что раньше занимало недели, теперь делается за часы.',
-                about_card2_title: '💻 MacBook разработка',
-                about_card2_text: 'Работаю на MacBook Pro. Мощный инструмент для быстрой и эффективной разработки.',
-                about_card3_title: '🌍 Международный рынок',
-                about_card3_text: 'Готовлю портфолио для работы с европейскими клиентами. Английский уровня B1.',
-                services_title: 'Услуги',
-                projects_title: 'Мои проекты',
-                project1_desc: 'Сайт строительной компании. Современный дизайн, адаптивная вёрстка, многоязычность.',
-                project2_desc: 'Личный сайт-портфолио с поддержкой трёх языков, плавной анимацией и мобильным меню.',
-                project3_title: 'Следующий проект',
-                project3_desc: 'Готовлю новый проект для портфолио. Следите за обновлениями!',
-                project_view: 'Посмотреть сайт',
-                service1_title: 'Лендинги',
-                service1_text: 'Современные одностраничные сайты для бизнеса, продуктов и услуг. Адаптивный дизайн, быстрая загрузка.',
-                service2_title: 'Многостраничные сайты',
-                service2_text: 'Полноценные сайты с несколькими страницами: главная, о компании, услуги, контакты, блог.',
-                service3_title: 'Доработка сайтов',
-                service3_text: 'Добавлю новые секции, изменю дизайн, оптимизирую скорость загрузки вашего существующего сайта.',
-                contact_title: 'Связаться со мной',
-                contact_subtitle: 'Открыт для сотрудничества и новых проектов',
-                form_submit: 'Отправить сообщение',
-                footer: '© 2026 Blatboy. Создано с помощью Vibe Coding.'
-            },
-            en: {
-                nav_about: 'About', nav_services: 'Services', nav_projects: 'Projects', nav_contact: 'Contact',
-                hero_title: 'I am a Future Web Developer',
-                hero_subtitle: 'I create modern websites using AI. Learning vibe coding to deliver projects for clients worldwide.',
-                hero_cta: 'Get in Touch',
-                about_title: 'About Me',
-                about_card1_title: '🚀 Vibe Coding',
-                about_card1_text: 'Using AI for rapid development. What used to take weeks now takes hours.',
-                about_card2_title: '💻 MacBook Development',
-                about_card2_text: 'Working on MacBook Pro. A powerful tool for fast and efficient development.',
-                about_card3_title: '🌍 International Market',
-                about_card3_text: 'Building a portfolio to work with European clients. English level B1, learning Spanish.',
-                services_title: 'Services',
-                projects_title: 'My Projects',
-                project1_desc: 'Construction company website. Modern design, responsive layout, multilingual support.',
-                project2_desc: 'Personal portfolio website with three languages, smooth animations and mobile menu.',
-                project3_title: 'Next Project',
-                project3_desc: 'Preparing a new project for the portfolio. Stay tuned!',
-                project_view: 'View Site',
-                service1_title: 'Landing Pages',
-                service1_text: 'Modern one-page websites for businesses, products and services. Responsive design, fast loading.',
-                service2_title: 'Multi-page Websites',
-                service2_text: 'Full websites with multiple pages: home, about, services, contacts, blog.',
-                service3_title: 'Website Improvements',
-                service3_text: 'I will add new sections, change the design, optimize the loading speed of your existing website.',
-                contact_title: 'Contact Me',
-                contact_subtitle: 'Open for collaboration and new projects',
-                form_submit: 'Send Message',
-                footer: '© 2026 Blatboy. Created with Vibe Coding.'
-            },
-            es: {
-                nav_about: 'Sobre mí', nav_services: 'Servicios', nav_projects: 'Proyectos', nav_contact: 'Contacto',
-                hero_title: 'Soy un Futuro Desarrollador Web',
-                hero_subtitle: 'Creo sitios web modernos con IA. Aprendiendo vibe coding para hacer proyectos para clientes de todo el mundo.',
-                hero_cta: 'Contactar',
-                about_title: 'Sobre Mí',
-                about_card1_title: '🚀 Vibe Coding',
-                about_card1_text: 'Uso IA para desarrollo rápido. Lo que antes tomaba semanas, ahora se hace en horas.',
-                about_card2_title: '💻 Desarrollo en MacBook',
-                about_card2_text: 'Trabajo en MacBook Pro. Una herramienta poderosa para desarrollo rápido y eficiente.',
-                about_card3_title: '🌍 Mercado Internacional',
-                about_card3_text: 'Preparando portafolio para trabajar con clientes europeos. Inglés nivel B1, aprendiendo español.',
-                services_title: 'Servicios',
-                projects_title: 'Mis Proyectos',
-                project1_desc: 'Sitio web de empresa de construcción. Diseño moderno, layout responsive, soporte multilingüe.',
-                project2_desc: 'Sitio web de portafolio personal con tres idiomas, animaciones suaves y menú móvil.',
-                project3_title: 'Próximo Proyecto',
-                project3_desc: 'Preparando un nuevo proyecto para el portafolio. ¡Próximamente!',
-                project_view: 'Ver Sitio',
-                service1_title: 'Landing Pages',
-                service1_text: 'Sitios modernos de una página para negocios, productos y servicios. Diseño responsive, carga rápida.',
-                service2_title: 'Sitios Multi-página',
-                service2_text: 'Sitios web completos con varias páginas: inicio, nosotros, servicios, contacto, blog.',
-                service3_title: 'Mejoras de Sitios',
-                service3_text: 'Agregaré nuevas secciones, cambiaré el diseño, optimizaré la velocidad de carga de su sitio web.',
-                contact_title: 'Contactarme',
-                contact_subtitle: 'Abierto a colaboraciones y nuevos proyectos',
-                form_submit: 'Enviar Mensaje',
-                footer: '© 2026 Blatboy. Creado con Vibe Coding.'
-            }
-        };
-
-        const langNames = {ru: '🇷🇺 RU', en: '🇬🇧 EN', es: '🇪🇸 ES'};
-        let currentLang = localStorage.getItem('siteLang') || 'ru';
-
-        function updateText() {
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (i18n[currentLang][key]) {
-                    el.classList.add('fade');
-                    setTimeout(() => {
-                        el.textContent = i18n[currentLang][key];
-                        el.classList.remove('fade');
-                    }, 200);
+        // Smooth scroll for navbar links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
-            document.getElementById('currentLang').textContent = langNames[currentLang] + ' ▼';
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                opt.classList.toggle('active', opt.textContent.includes(langNames[currentLang].split(' ')[1]));
-            });
-            document.documentElement.lang = currentLang;
-        }
-
-        function setLang(lang) {
-            currentLang = lang;
-            localStorage.setItem('siteLang', lang);
-            updateText();
-            document.getElementById('langDropdown').classList.remove('show');
-        }
-
-        function toggleLang() {
-            document.getElementById('langDropdown').classList.toggle('show');
-        }
-
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-        }
-
-        function closeMenu() {
-            document.getElementById('navLinks').classList.remove('active');
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
-            });
         });
 
-        document.addEventListener('click', e => {
-            if (!e.target.closest('.lang-switcher')) document.getElementById('langDropdown').classList.remove('show');
-        });
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        // Анимации при скролле
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.style.opacity = '1';
                 }
             });
-        }, { threshold: 0.15 });
+        }, observerOptions);
 
-        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
 
-        // Активная навигация при скролле
+        // Active nav link on scroll
         const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.links a[href^="#"]');
-        const toTopBtn = document.getElementById('toTop');
+        const navLinks = document.querySelectorAll('.nav-link');
 
         window.addEventListener('scroll', () => {
             let current = '';
@@ -434,21 +642,14 @@
                     current = section.getAttribute('id');
                 }
             });
+
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#' + current) {
                     link.classList.add('active');
                 }
             });
-            // Кнопка наверх
-            if (window.scrollY > 500) {
-                toTopBtn.classList.add('show');
-            } else {
-                toTopBtn.classList.remove('show');
-            }
         });
-
-        updateText();
     </script>
 </body>
 </html>
