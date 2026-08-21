@@ -570,42 +570,42 @@ body.menu-open .burger span:nth-child(3) { transform: translateY(-6.5px) rotate(
 }
 .case-link:hover { border-bottom-color: var(--accent); }
 
-/* NordBuild shot pair. */
-.shot-pair { position: relative; }
+/* NordBuild shot pair. Side by side, never overlapping: the phone used to be
+   absolutely positioned over the desktop shot and covered its headline. */
+.shot-pair {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+}
 .shot-desktop {
+  flex: 1 1 auto;
+  min-width: 0;
   border: 1px solid var(--border-soft);
   border-radius: var(--r-card);
   overflow: hidden;
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75);
 }
 .shot-mobile {
-  position: absolute;
-  right: -26px;
-  bottom: -30px;
-  width: 20%;
+  flex: 0 0 23%;
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 22px 48px rgba(0, 0, 0, 0.85);
 }
 
-/* Tether: text-led block with a stack panel instead of a screenshot. */
-.stack-panel {
-  border: 1px solid var(--border-soft);
-  border-radius: var(--r-card);
-  background: linear-gradient(150deg, rgba(255, 163, 58, 0.09), rgba(0, 0, 0, 0) 46%), rgba(255, 255, 255, 0.02);
-  padding: 34px;
-}
-.stack-row {
+/* Tether: two real app screens, side by side. */
+.phones {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 20px;
-  padding: 15px 0;
+  justify-content: center;
+  gap: 18px;
 }
-.stack-row + .stack-row { border-top: 1px solid var(--border-soft); }
-.stack-row dt { color: var(--muted); font-size: 13.5px; letter-spacing: -0.01em; }
-.stack-row dd { font-size: 14.5px; font-weight: 500; letter-spacing: -0.015em; text-align: right; }
+.phone {
+  flex: 0 1 250px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.8);
+}
 
 /* Services: bento with mixed cell sizes. */
 .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -929,22 +929,14 @@ body.menu-open .burger span:nth-child(3) { transform: translateY(-6.5px) rotate(
   .case { grid-template-columns: 1fr; gap: 32px; }
   .case--flip .case-media { order: 0; }
   .case + .case { margin-top: 56px; padding-top: 56px; }
-  /* No overlap on a phone: at ~335px the offset shot ran past the right edge
-     and got clipped by the page. Side by side, bottom-aligned, instead. */
-  .shot-pair { display: flex; align-items: flex-end; gap: 10px; }
-  .shot-desktop { flex: 1 1 auto; min-width: 0; }
-  .shot-mobile {
-    position: static;
-    flex: 0 0 27%;
-    right: auto;
-    bottom: auto;
-    width: auto;
-  }
+  .shot-pair { gap: 10px; }
+  .shot-mobile { flex-basis: 27%; }
+  .phones { gap: 10px; }
+  .phone { flex: 0 1 47%; border-radius: 16px; }
 
   .bento { grid-template-columns: 1fr; }
   .cell--wide { grid-column: span 1; }
   .cell { padding: 24px; }
-  .stack-panel { padding: 24px; }
 
   .step { grid-template-columns: 1fr; gap: 10px; padding: 26px 0; }
 
@@ -957,8 +949,6 @@ body.menu-open .burger span:nth-child(3) { transform: translateY(-6.5px) rotate(
   .hero-actions { flex-direction: column; width: 100%; }
   .hero-actions .btn { width: 100%; }
   .form .btn { align-self: stretch; width: 100%; }
-  .stack-row { flex-direction: column; align-items: flex-start; gap: 4px; }
-  .stack-row dd { text-align: left; }
 }
 </style>
 <script>
@@ -1105,15 +1095,16 @@ body.menu-open .burger span:nth-child(3) { transform: translateY(-6.5px) rotate(
         </div>
 
         <div class="case-media">
-          <!-- TODO: заменить панель на реальные скриншоты экранов приложения
-               (assets/tether-home.png, assets/tether-pairing.png) в рамке телефона. -->
-          <dl class="stack-panel">
-            <div class="stack-row"><dt>Интерфейс</dt><dd>SwiftUI</dd></div>
-            <div class="stack-row"><dt>Данные</dt><dd>Firestore через REST</dd></div>
-            <div class="stack-row"><dt>Свой релей</dt><dd>Cloudflare Workers</dd></div>
-            <div class="stack-row"><dt>Виджет</dt><dd>WidgetKit, App Group</dd></div>
-            <div class="stack-row"><dt>Состояние</dt><dd>Работает на устройствах</dd></div>
-          </dl>
+          <div class="phones">
+            <div class="phone">
+              <img src="assets/tether-home.jpg" width="415" height="900" loading="lazy"
+                   alt="Главный экран Tether: счётчик «9 месяцев, 26 дней вместе» и расстояние до партнёра">
+            </div>
+            <div class="phone">
+              <img src="assets/tether-hug.jpg" width="415" height="900" loading="lazy"
+                   alt="Экран Tether в момент, когда партнёр прислал объятие">
+            </div>
+          </div>
         </div>
       </article>
 
