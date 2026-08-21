@@ -1,598 +1,1404 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="Blatboy — веб-разработчик. Создаю современные лендинги и сайты с помощью AI. Адаптивный дизайн, анимации, быстрая загрузка.">
-    <meta name="keywords" content="веб-разработчик, лендинг, сайт визитка, html, css, javascript, адаптивная верстка, AI">
-    <meta name="author" content="Blatboy">
-    <meta name="robots" content="all">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blatboy.dev — сайты и мобильные приложения</title>
+<meta name="description" content="Делаю лендинги, многостраничные сайты и iOS-приложения. От макета до запуска: дизайн, вёрстка, форма заявок, домен и хостинг.">
+<meta name="keywords" content="веб-разработчик, лендинг, сайт под ключ, ios приложение, swiftui, вёрстка">
+<meta name="author" content="Blatboy">
+<meta name="robots" content="all">
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://blatboy777.github.io/">
-    <meta property="og:site_name" content="Blatboy — Web Developer">
-    <meta property="og:title" content="Blatboy — веб-разработчик">
-    <meta property="og:description" content="Создаю современные лендинги и сайты с помощью AI. Адаптивный дизайн, анимации, быстрая загрузка.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://blatboy777.github.io/my-first-landing/">
+<meta property="og:site_name" content="Blatboy.dev">
+<meta property="og:title" content="Blatboy.dev — сайты и мобильные приложения">
+<meta property="og:description" content="От макета до запуска: дизайн, вёрстка, форма заявок, домен и хостинг. Всё делает один человек.">
+<meta property="og:image" content="https://blatboy777.github.io/my-first-landing/assets/hero-poster.jpg">
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-    <title>Blatboy — Web Developer</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230a0a0a'/%3E%3Cpath d='M9.5 8L6 12l3.5 4M14.5 8L18 12l-3.5 4' stroke='%23FFA33A' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Hard black floor first, so the page can never flash white. */
+html, body { background: #000000 !important; color: #ffffff; }
 
-    <style>
-        :root {
-            --primary: #E44927;
-            --primary-active: #cd4223;
-            --dark: #171717;
-            --light: #FBFBFB;
-            --warning: #F59E0B;
-            --text-muted: #5c5c5c;
-            --radius: 24px;
-        }
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("assets/fonts/inter-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("assets/fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2192, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Instrument Serif from the reference has no Cyrillic, so the italic accent
+   uses Playfair Display, which does. */
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/playfair-italic-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/playfair-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2192, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
-        * { font-family: 'Ubuntu', system-ui, sans-serif; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            color: var(--dark);
-            background: #fff;
-            overflow-x: hidden;
-        }
+html, body {
+  background: #000000;
+  background: var(--bg, #000000);
+  color: #ffffff;
+  color: var(--text, #ffffff);
+}
 
-        h1, h2, h3, h4, .digit { font-weight: 700; }
-        .opacity-7 { color: var(--text-muted); }
+html { scroll-behavior: smooth; }
 
-        /* Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.97) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 1px 0 rgba(0,0,0,0.06);
-            padding: 1.2rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar-brand { font-weight: 700; font-size: 1.3rem; color: var(--dark) !important; letter-spacing: -0.02em; }
-        .nav-link { color: var(--dark) !important; font-weight: 500; margin: 0 0.6rem; text-transform: uppercase; font-size: 0.85rem; transition: color 0.3s; }
-        .nav-link:hover, .nav-link.active { color: var(--primary) !important; }
-        .nav-contact { color: var(--dark); text-decoration: none; font-size: 0.95rem; white-space: nowrap; }
-        .btn-primary {
-            background: var(--primary) !important;
-            border-color: var(--primary) !important;
-            color: #fff !important;
-            border-radius: 50px;
-            font-weight: 500;
-            padding: 10px 26px;
-            transition: all 0.25s;
-        }
-        .btn-primary:hover { background: var(--primary-active) !important; border-color: var(--primary-active) !important; transform: translateY(-2px); }
-        .btn-outline-dark-custom {
-            border: 1.5px solid var(--dark);
-            color: var(--dark);
-            border-radius: 50px;
-            padding: 10px 26px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.25s;
-            display: inline-block;
-        }
-        .btn-outline-dark-custom:hover { background: var(--dark); color: #fff; }
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  position: relative;
+}
 
-        /* Hero */
-        .hero { padding: 5rem 0 4rem; background: #fff; }
-        .hero-eyebrow { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; }
-        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 1.3rem; }
-        .hero p.lead { color: var(--text-muted); font-size: 1.15rem; max-width: 500px; margin-bottom: 2rem; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+/* height:auto is required: the width/height attributes reserve layout space,
+   but without it a shrunk image keeps its attribute height and distorts. */
+img { max-width: 100%; height: auto; display: block; }
 
-        .hero-illustration {
-            width: 100%;
-            max-width: 480px;
-            margin-left: auto;
-            display: block;
-        }
+:root {
+  --bg: #000000;
+  --text: #ffffff;
+  --muted: #9a9a9a;
+  --stat: #d8d8d8;
+  --border: rgba(255, 255, 255, 0.16);
+  --border-soft: rgba(255, 255, 255, 0.12);
 
-        /* Numbered steps */
-        .steps-section { background: var(--light); padding: 5rem 0; }
-        .step-box { text-align: center; padding: 1.5rem; }
-        .step-icon {
-            width: 64px; height: 64px;
-            border-radius: 18px;
-            background: #fff;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 0 auto 1.2rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-        }
-        .step-box p.h5 { font-weight: 600; margin: 0; }
+  /* Single accent for the whole page: keeps the orange both existing sites use. */
+  --accent: #ffa33a;
+  --accent-dim: rgba(255, 163, 58, 0.22);
 
-        /* Why me split */
-        .split-section { padding: 5rem 0; }
-        .split-section h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 1.3rem; letter-spacing: -0.01em; }
-        .split-section p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; }
-        .split-illustration { width: 100%; max-width: 420px; }
+  /* One radius scale: pills 7, buttons 6, cards 14. */
+  --r-pill: 7px;
+  --r-btn: 6px;
+  --r-card: 14px;
 
-        /* Stats */
-        .stats-section { background: var(--light); padding: 4.5rem 0; }
-        .stat-box { text-align: center; }
-        .stat-box .digit { font-size: 2.6rem; color: var(--primary); line-height: 1; margin-bottom: 0.6rem; }
-        .stat-box p.h5 { font-weight: 500; color: var(--text-muted); margin: 0; font-size: 1rem; }
+  --logo: 15.5px;
+  --logo-mark: 22px;
+  --nav: 14px;
+  --nav-h: 40px;
+  --btn: 13.5px;
+  --btn-h: 40px;
+  --hero-btn-h: 42px;
+  --h1: 48px;
+  --h2: 38px;
+  --lede: 15.5px;
+  --badge: 12.5px;
+  --stat-size: 13.5px;
+  --header-y: 22px;
+  --header-x: 40px;
+  --header-h: 84px;
+  --stats-x: 72px;
+  --stats-y: 36px;
+  --hero-gap: 85px;
+  --copy-max: 860px;
+  --lede-max: 470px;
+  --wrap: 1200px;
+  --section-y: 128px;
+}
 
-        /* Services */
-        .services-section { padding: 5rem 0; }
-        .services-section h2 { text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 4vw, 2.4rem); }
-        .service-card {
-            background: #fff;
-            border-radius: var(--radius);
-            padding: 2.4rem 2rem;
-            text-align: center;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-            transition: all 0.3s;
-            height: 100%;
-        }
-        .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(228,73,39,0.15); }
-        .service-card .icon-wrap {
-            width: 56px; height: 56px;
-            border-radius: 16px;
-            background: rgba(228,73,39,0.1);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; color: var(--primary);
-            margin: 0 auto 1.2rem;
-        }
-        .service-card h3 { font-size: 1.15rem; margin-bottom: 0.8rem; }
-        .service-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin: 0; }
+/* ---------------------------------------------------------------- layers */
 
-        /* Projects */
-        .projects-section { background: var(--light); padding: 5rem 0; }
-        .projects-section h2 { text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 4vw, 2.4rem); }
-        .project-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.06); transition: all 0.3s; height: 100%; }
-        .project-card:hover { transform: translateY(-8px); box-shadow: 0 14px 40px rgba(0,0,0,0.12); }
-        .project-image { height: 180px; background: linear-gradient(135deg, var(--primary) 0%, #ff8a5c 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
-        .project-content { padding: 1.8rem; }
-        .project-content h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-        .project-content p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1rem; }
-        .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.3rem; }
-        .project-tag { background: var(--light); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
-        .project-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
-        .project-link:hover { color: var(--primary-active); }
+.hero-photo {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background-color: #000000;
+  background-image: url("assets/hero-poster.jpg");
+  background-size: cover;
+  background-position: center 38%;
+  background-repeat: no-repeat;
+  animation: in-photo 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+/* Sits on top of the poster, which stays as the fallback everywhere the clip
+   is not loaded: phones, reduced motion, or a browser that refuses autoplay. */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  display: block;
+  border: 0;
+}
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Heavier at the bottom: the mesh is bright white and the headline sits there. */
+  background: linear-gradient(180deg,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.15) 30%,
+    rgba(0, 0, 0, 0.58) 64%,
+    rgba(0, 0, 0, 0.88) 100%);
+  pointer-events: none;
+}
+.hero-photo.is-in { animation: none; opacity: 1; transform: none; }
 
-        /* FAQ */
-        .faq-section { padding: 5rem 0; }
-        .faq-section h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 0.8rem; }
-        .accordion-item { border: none; border-bottom: 1px solid #eee; }
-        .accordion-button { font-weight: 600; padding: 1.3rem 0; box-shadow: none !important; background: transparent !important; color: var(--dark) !important; }
-        .accordion-button:not(.collapsed) { color: var(--primary) !important; }
-        .accordion-button::after { flex-shrink: 0; }
-        .accordion-body { padding: 0 0 1.3rem; color: var(--text-muted); }
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-        /* Contact */
-        .contact-info-section { background: var(--light); padding: 4.5rem 0 2rem; }
-        .contact-info-section h2 { text-align: center; margin-bottom: 3rem; font-size: clamp(1.8rem, 4vw, 2.4rem); }
-        .contact-info-box { text-align: center; padding: 1.5rem; }
-        .contact-info-icon {
-            width: 56px; height: 56px; border-radius: 16px;
-            background: rgba(228,73,39,0.1);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; color: var(--primary);
-            margin: 0 auto 1rem;
-        }
-        .contact-info-box p.h5 { font-weight: 600; margin-bottom: 0.2rem; }
-        .contact-info-box a { color: var(--text-muted); text-decoration: none; }
-        .contact-info-box a:hover { color: var(--primary); }
+/* First screen. */
+.page {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-top: var(--header-h);
+}
 
-        .contact-form-wrap { max-width: 560px; margin: 1rem auto 0; padding-bottom: 3rem; }
-        .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-        .contact-form input, .contact-form textarea {
-            padding: 14px 18px; border: 1.5px solid #e5e5e5; border-radius: 14px;
-            font-family: 'Ubuntu', sans-serif; font-size: 1rem; background: #fff;
-        }
-        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary); }
-        .contact-form textarea { min-height: 120px; resize: vertical; }
-        .contact-form button {
-            padding: 14px; background: var(--primary); color: #fff; border: none;
-            border-radius: 50px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s;
-        }
-        .contact-form button:hover { background: var(--primary-active); }
+/* Everything below the fold sits on solid black, above the fixed photo. */
+.below {
+  position: relative;
+  z-index: 2;
+  background: #000000;
+  border-top: 1px solid var(--border-soft);
+}
 
-        /* Footer */
-        footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 3rem 0; }
-        footer .footer-brand { color: #fff; font-weight: 700; font-size: 1.15rem; margin-bottom: 0.6rem; }
-        footer .footer-social a {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; border-radius: 50%;
-            border: 1.5px solid rgba(255,255,255,0.2); color: #fff; margin-right: 0.6rem;
-            text-decoration: none; transition: all 0.25s;
-        }
-        footer .footer-social a:hover { background: var(--primary); border-color: var(--primary); }
-        footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem; padding-top: 1.5rem; font-size: 0.9rem; }
+/* ---------------------------------------------------------------- header */
 
-        @media (max-width: 768px) {
-            .hero { padding: 3rem 0 2.5rem; text-align: center; }
-            .hero p.lead { margin-left: auto; margin-right: auto; }
-            .hero-illustration { margin: 2rem auto 0; }
-            .split-illustration { margin-bottom: 2rem; }
-        }
-    </style>
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: var(--header-y) var(--header-x);
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+.header.is-stuck {
+  background: rgba(6, 6, 8, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--border-soft);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  justify-self: start;
+  font-size: var(--logo);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+.logo-mark { width: var(--logo-mark); height: var(--logo-mark); display: block; color: var(--accent); }
+.logo-suffix { font-weight: 400; color: var(--muted); }
+
+#site-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-self: center;
+}
+
+.nav-link {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--nav-h);
+  padding: 0 18px;
+  border-radius: var(--r-pill);
+  border: 1px solid rgba(198, 198, 198, 0.55);
+  background: linear-gradient(105deg, #050505 0%, #2a2a2a 48%, #4a4a4a 100%);
+  color: #f3f3f3;
+  font-size: var(--nav);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.nav-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.16) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+.nav-link:hover {
+  border-color: rgba(235, 235, 235, 0.9);
+  background: linear-gradient(105deg, #111111 0%, #3a3a3a 45%, #6a6a6a 100%);
+  box-shadow: 0 0 18px rgba(255, 163, 58, 0.18);
+}
+.nav-link:hover::before { transform: translateX(120%); }
+
+.header-cta { justify-self: end; }
+
+.burger {
+  display: none;
+  place-items: center;
+  place-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--r-btn);
+  border: 1px solid var(--border);
+  background: rgba(8, 8, 8, 0.55);
+  cursor: pointer;
+  z-index: 60;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.burger span {
+  width: 16px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: #ffffff;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.burger:hover { border-color: rgba(255, 255, 255, 0.32); background: rgba(255, 255, 255, 0.05); }
+body.menu-open .burger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+body.menu-open .burger span:nth-child(2) { opacity: 0; }
+body.menu-open .burger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* --------------------------------------------------------------- buttons */
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--btn-h);
+  padding: 0 16px;
+  border-radius: var(--r-btn);
+  font-size: var(--btn);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.45) 48%, transparent 76%);
+  transform: translateX(-130%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+.btn:hover::after { transform: translateX(130%); }
+.btn:active { transform: translateY(1px); }
+
+.btn-solid {
+  background: linear-gradient(180deg, #ffffff 0%, #e7e7e7 48%, #cfcfcf 100%);
+  color: #111111;
+  border: 1px solid #ffffff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+.btn-solid:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #fff3e2 42%, #f2d3a6 100%);
+  border-color: #fff1de;
+  box-shadow: inset 0 1px 0 #ffffff, 0 0 22px rgba(255, 163, 58, 0.35), 0 8px 18px rgba(255, 255, 255, 0.12);
+}
+
+.btn-ghost {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.45) 50%, rgba(200, 175, 140, 0.08));
+  color: #ffffff;
+  border: 1px solid rgba(198, 198, 198, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.btn-ghost:hover {
+  background: linear-gradient(135deg, rgba(255, 214, 166, 0.18), rgba(0, 0, 0, 0.35) 48%, rgba(220, 190, 150, 0.16));
+  border-color: rgba(255, 214, 166, 0.75);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 0 20px rgba(255, 163, 58, 0.22);
+}
+
+.hero-actions .btn { height: var(--hero-btn-h); padding: 0 18px; }
+.hero-actions .btn-solid:hover {
+  box-shadow: inset 0 1px 0 #ffffff, 0 0 26px rgba(255, 163, 58, 0.4), 0 8px 18px rgba(255, 255, 255, 0.14);
+}
+
+.hero-ghost {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.5) 46%, rgba(200, 175, 140, 0.1));
+  border: 1px solid rgba(198, 198, 198, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.hero-ghost:hover {
+  border-color: rgba(255, 214, 166, 0.8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 0 24px rgba(255, 163, 58, 0.28);
+}
+
+/* ------------------------------------------------------------------ hero */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 8px 24px var(--hero-gap);
+  min-height: 0;
+}
+/* Local scrim under the copy. The clip is bright in the middle and the muted
+   lede is unreadable straight on it; the page scrim alone is not enough. */
+.hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 68%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.74) 44%, rgba(0, 0, 0, 0.93) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: var(--copy-max);
+  width: 100%;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  padding: 9px 15px;
+  border: 0;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #7d7d7d 0%, #2a2a2a 52%, #0a0a0a 100%);
+  color: #f2f2f2;
+  font-size: var(--badge);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.badge-star {
+  flex: none;
+  filter: drop-shadow(0 0 3px rgba(255, 163, 58, 0.55));
+  animation: in-star 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
+}
+
+.hero h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--h1);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+  color: #ffffff;
+}
+.headline-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.06em 0.15em 0.16em;
+}
+.headline-line > span { display: block; }
+.hero h1 em {
+  font-family: "Playfair Display", "Times New Roman", Times, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.08em;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--accent);
+  animation: in-em 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.72s both;
+}
+
+.lede {
+  max-width: var(--lede-max);
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: var(--lede);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+/* ----------------------------------------------------------------- stats */
+
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 var(--stats-x) var(--stats-y);
+  color: var(--stat);
+}
+.stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: var(--stat-size);
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+}
+.stat-icon { width: 20px; height: 20px; flex: none; }
+
+/* -------------------------------------------------------------- sections */
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 40px; }
+.section { padding: var(--section-y) 0; }
+.section + .section { border-top: 1px solid var(--border-soft); }
+
+.section h2 {
+  font-size: var(--h2);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.section-intro {
+  max-width: 58ch;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  margin-bottom: 56px;
+}
+
+/* Projects: two case rows, mirrored. */
+.case { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.case + .case { margin-top: 96px; padding-top: 96px; border-top: 1px solid var(--border-soft); }
+.case--flip .case-media { order: -1; }
+
+.case-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+.case h3 {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  margin-bottom: 16px;
+}
+.case p { color: var(--muted); font-size: 15.5px; line-height: 1.65; letter-spacing: -0.01em; }
+.case p + p { margin-top: 14px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.tag {
+  padding: 6px 12px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-btn);
+  color: #cfcfcf;
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
+}
+
+.case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 26px;
+  color: var(--accent);
+  font-size: 14.5px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--accent-dim);
+  padding-bottom: 2px;
+  transition: border-color 0.25s ease;
+}
+.case-link:hover { border-bottom-color: var(--accent); }
+
+/* NordBuild shot pair. */
+.shot-pair { position: relative; }
+.shot-desktop {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75);
+}
+.shot-mobile {
+  position: absolute;
+  right: -26px;
+  bottom: -30px;
+  width: 20%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.85);
+}
+
+/* Tether: text-led block with a stack panel instead of a screenshot. */
+.stack-panel {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-card);
+  background: linear-gradient(150deg, rgba(255, 163, 58, 0.09), rgba(0, 0, 0, 0) 46%), rgba(255, 255, 255, 0.02);
+  padding: 34px;
+}
+.stack-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  padding: 15px 0;
+}
+.stack-row + .stack-row { border-top: 1px solid var(--border-soft); }
+.stack-row dt { color: var(--muted); font-size: 13.5px; letter-spacing: -0.01em; }
+.stack-row dd { font-size: 14.5px; font-weight: 500; letter-spacing: -0.015em; text-align: right; }
+
+/* Services: bento with mixed cell sizes. */
+.bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.cell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-card);
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.cell:hover { border-color: rgba(255, 255, 255, 0.24); background: rgba(255, 255, 255, 0.04); }
+.cell--wide { grid-column: span 2; }
+.cell--glow {
+  background:
+    radial-gradient(120% 140% at 8% 0%, rgba(255, 163, 58, 0.20) 0%, rgba(255, 163, 58, 0) 58%),
+    rgba(255, 255, 255, 0.02);
+}
+.cell--grid {
+  background-color: rgba(255, 255, 255, 0.02);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.cell h3 { font-size: 19px; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 10px; }
+.cell p { color: var(--muted); font-size: 14.5px; line-height: 1.6; letter-spacing: -0.01em; }
+.cell-icon { color: var(--accent); margin-bottom: 18px; display: block; }
+
+/* Process: index rail. */
+.rail { border-top: 1px solid var(--border-soft); }
+.step {
+  display: grid;
+  grid-template-columns: 90px 1fr 1.3fr;
+  gap: 32px;
+  align-items: baseline;
+  padding: 34px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+.step-index {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.step h3 { font-size: 22px; font-weight: 500; letter-spacing: -0.03em; }
+.step p { color: var(--muted); font-size: 15px; line-height: 1.6; letter-spacing: -0.01em; }
+
+/* FAQ. */
+.faq { border-top: 1px solid var(--border-soft); max-width: 900px; }
+.faq details { border-bottom: 1px solid var(--border-soft); }
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 26px 44px 26px 0;
+  position: relative;
+  font-size: 17.5px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  transition: color 0.25s ease;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--accent); }
+.faq summary::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  margin-top: -7px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform 0.28s ease, border-color 0.28s ease;
+}
+.faq details[open] summary::after { transform: rotate(-135deg); margin-top: -3px; border-color: var(--accent); }
+.faq-body { padding: 0 44px 28px 0; color: var(--muted); font-size: 15.5px; line-height: 1.65; letter-spacing: -0.01em; }
+
+/* Contact. */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: start; }
+.contact-list { margin-top: 34px; border-top: 1px solid var(--border-soft); }
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 15.5px;
+  letter-spacing: -0.015em;
+  transition: color 0.25s ease;
+}
+.contact-row:hover { color: var(--accent); }
+.contact-row svg { color: var(--muted); flex: none; transition: color 0.25s ease; }
+.contact-row:hover svg { color: var(--accent); }
+.contact-row span { color: var(--muted); margin-left: auto; font-size: 13.5px; }
+
+.form { display: flex; flex-direction: column; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label { font-size: 13.5px; color: #cfcfcf; letter-spacing: -0.01em; }
+.field input, .field textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-btn);
+  background: rgba(255, 255, 255, 0.03);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.field textarea { min-height: 128px; resize: vertical; }
+.field input::placeholder, .field textarea::placeholder { color: #8b8b8b; }
+.field input:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.05);
+}
+.form-note { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.form .btn { align-self: flex-start; height: 46px; padding: 0 24px; font-size: 15px; }
+
+/* Footer. */
+.footer {
+  border-top: 1px solid var(--border-soft);
+  padding: 44px 0;
+  color: var(--muted);
+  font-size: 13.5px;
+  letter-spacing: -0.01em;
+}
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+.footer a:hover { color: var(--accent); }
+
+/* ---------------------------------------------------------------- motion */
+
+.appear {
+  opacity: 1;
+  animation-duration: 1.05s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-delay: var(--d, 0.08s);
+}
+.appear--scale { animation-name: in-scale; }
+.appear--soft  { animation-name: in-soft; }
+.appear--mask  { animation-name: in-mask; }
+.appear--pop   { animation-name: in-pop; }
+.appear--btn   { animation-name: in-btn; }
+.appear--side  { animation-name: in-side; }
+.appear--stat  { animation-name: in-stat; }
+.lede.appear { animation-duration: 1.25s; }
+.appear.is-in { animation: none; opacity: 1; transform: none; clip-path: none; filter: none; }
+
+/* Scroll reveal for the sections below the fold.
+   Resting state is visible. The hidden state only applies once the inline
+   head script confirms IntersectionObserver exists, so a page that never
+   gets its observer callbacks still shows all of its content. */
+.reveal {
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js-reveal .reveal { opacity: 0; transform: translateY(22px); }
+.js-reveal .reveal.in-view { opacity: 1; transform: none; }
+/* Failsafe escape hatch. Snaps content visible with no transition, because a
+   throttled or background tab never advances one and would freeze at 0. */
+.reveal-off .reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+
+@keyframes in-scale { from { opacity: 0; transform: scale(0.84); } to { opacity: 1; transform: scale(1); } }
+@keyframes in-soft  { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes in-mask  { from { opacity: 0; transform: translateY(40%); } to { opacity: 1; transform: translateY(0); } }
+@keyframes in-pop {
+  0%   { opacity: 0; transform: scale(0.9); }
+  70%  { opacity: 1; transform: scale(1.03); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes in-btn  { from { opacity: 0; transform: translateY(18px) scale(0.94); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes in-side { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes in-stat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes in-star {
+  0%   { opacity: 0; transform: scale(0.2) rotate(-50deg); }
+  65%  { opacity: 1; transform: scale(1.2) rotate(8deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes in-em { from { opacity: 0.35; filter: blur(4px); } to { opacity: 1; filter: blur(0); } }
+@keyframes in-photo { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .appear, .hero-photo, .hero h1 em, .badge-star { opacity: 1; transform: none; clip-path: none; filter: none; }
+  .js-reveal .reveal, .js-reveal .reveal.in-view { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (min-width: 1600px) {
+  :root {
+    --logo: 17px; --logo-mark: 24px; --nav: 15px; --nav-h: 44px;
+    --btn: 15px; --btn-h: 44px; --hero-btn-h: 48px;
+    --h1: 64px; --h2: 46px; --lede: 18px; --badge: 13.5px; --stat-size: 15px;
+    --header-y: 28px; --header-x: 64px; --header-h: 100px;
+    --stats-x: 96px; --stats-y: 44px;
+    --copy-max: 980px; --lede-max: 540px;
+    --wrap: 1320px; --section-y: 150px;
+  }
+  .nav-link { padding: 0 20px; }
+  .badge { margin-bottom: 26px; }
+  .lede { margin-top: 22px; }
+  .hero-actions { margin-top: 30px; gap: 12px; }
+  .stat-icon { width: 22px; height: 22px; }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --logo: 18px; --logo-mark: 26px; --nav: 16px; --nav-h: 48px;
+    --btn: 16px; --btn-h: 48px; --hero-btn-h: 52px;
+    --h1: 76px; --h2: 54px; --lede: 20px; --badge: 14.5px; --stat-size: 16px;
+    --header-y: 32px; --header-x: 80px; --header-h: 112px;
+    --stats-x: 120px; --stats-y: 52px;
+    --copy-max: 1120px; --lede-max: 620px;
+    --wrap: 1440px;
+  }
+  #site-nav { gap: 10px; }
+  .nav-link { padding: 0 22px; }
+  .hero-actions .btn { padding: 0 22px; }
+  .badge { padding: 10px 15px; }
+}
+
+@media (min-width: 1280px) and (max-width: 1599px) {
+  :root { --h1: 54px; --h2: 40px; --lede: 16px; --header-x: 48px; --stats-x: 80px; --copy-max: 900px; }
+}
+
+@media (min-width: 901px) and (max-width: 1279px) {
+  :root {
+    --logo: 15px; --nav: 13px; --nav-h: 36px;
+    --btn: 13px; --btn-h: 38px; --hero-btn-h: 40px;
+    --h1: 42px; --h2: 32px; --lede: 15px; --badge: 12px; --stat-size: 12.5px;
+    --header-y: 16px; --header-x: 28px; --header-h: 70px;
+    --stats-x: 36px; --stats-y: 28px;
+    --hero-gap: 64px; --copy-max: 760px; --lede-max: 440px;
+    --section-y: 96px;
+  }
+  .nav-link { padding: 0 14px; }
+  .badge { margin-bottom: 16px; }
+  .lede { margin-top: 14px; }
+  .hero-actions { margin-top: 20px; }
+  .case { gap: 40px; }
+  .contact-grid { gap: 48px; }
+}
+
+@media (min-width: 901px) and (max-height: 850px) {
+  :root { --header-y: 14px; --header-h: 66px; --stats-y: 24px; --hero-gap: 48px; --h1: 40px; }
+  .badge { margin-bottom: 12px; }
+  .lede { margin-top: 12px; }
+  .hero-actions { margin-top: 16px; }
+}
+
+@media (min-width: 901px) and (max-height: 720px) {
+  :root { --h1: 34px; --lede: 14px; --hero-gap: 32px; --stats-y: 18px; --nav-h: 30px; --btn-h: 34px; --hero-btn-h: 36px; }
+  .badge { margin-bottom: 8px; }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --logo: 16px; --btn: 15px; --btn-h: 46px; --hero-btn-h: 48px;
+    --h1: 36px; --h2: 29px; --lede: 16.5px; --badge: 13.5px; --stat-size: 15px;
+    --header-y: 16px; --header-x: 18px; --header-h: 74px;
+    --stats-x: 20px; --stats-y: 28px; --hero-gap: 36px;
+    --section-y: 80px;
+  }
+
+  .header {
+    grid-template-columns: 1fr auto auto;
+    gap: 8px;
+    padding-top: max(var(--header-y), env(safe-area-inset-top));
+    padding-left: max(var(--header-x), env(safe-area-inset-left));
+    padding-right: max(var(--header-x), env(safe-area-inset-right));
+  }
+  .logo, .header-cta, .burger { z-index: 80; }
+  .burger { display: grid; }
+
+  #site-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 45;
+    justify-self: stretch;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 12px;
+    padding: 96px 22px 32px;
+    padding-top: max(96px, calc(env(safe-area-inset-top) + 88px));
+    background: rgba(6, 6, 8, 0.86);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+  }
+  body.menu-open #site-nav { opacity: 1; visibility: visible; }
+  body.menu-open { overflow: hidden; }
+
+  .nav-link { width: 100%; height: 56px; font-size: 19px; border-radius: 10px; }
+
+  .hero { padding: 20px 20px 44px; }
+  .hero-copy, .lede { max-width: 100%; }
+
+  .stats { flex-direction: column; align-items: center; gap: 16px; }
+  .stat { white-space: normal; }
+
+  .wrap { padding: 0 20px; }
+  .section-intro { margin-bottom: 40px; }
+
+  .case { grid-template-columns: 1fr; gap: 32px; }
+  .case--flip .case-media { order: 0; }
+  .case + .case { margin-top: 56px; padding-top: 56px; }
+  .shot-mobile { right: -8px; bottom: -20px; width: 22%; }
+
+  .bento { grid-template-columns: 1fr; }
+  .cell--wide { grid-column: span 1; }
+  .cell { padding: 24px; }
+  .stack-panel { padding: 24px; }
+
+  .step { grid-template-columns: 1fr; gap: 10px; padding: 26px 0; }
+
+  .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+@media (max-width: 560px) {
+  :root { --h1: 34px; --lede: 16px; --header-x: 16px; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn { width: 100%; }
+  .form .btn { align-self: stretch; width: 100%; }
+  .stack-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .stack-row dd { text-align: left; }
+}
+</style>
+<script>
+  /* Arm the scroll-reveal hidden state only where it can actually be undone. */
+  if ('IntersectionObserver' in window) document.documentElement.classList.add('js-reveal');
+</script>
 </head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-lg">
-            <a class="navbar-brand" href="#">Blatboy.dev</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="#why">Почему я</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#stats">Обо мне</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Проекты</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
-                </ul>
-                <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
-                    <a href="https://t.me/Blatboy_777" target="_blank" class="nav-contact d-none d-xl-block">@Blatboy_777</a>
-                    <a href="#contact" class="btn btn-primary">Связаться со мной</a>
-                </div>
-            </div>
+<body style="background:#000;color:#fff">
+
+<div class="grain" aria-hidden="true"></div>
+<div class="hero-photo" aria-hidden="true">
+  <!-- src is attached by script, and only on desktop with motion allowed, so
+       phones never download the 7.5 MB clip. -->
+  <video class="hero-video" data-src="assets/hero.mp4" poster="assets/hero-poster.jpg"
+         muted loop playsinline preload="none" tabindex="-1"></video>
+</div>
+
+<!-- 1px target so the header's observer has a real box to intersect. -->
+<span id="top-sentinel" aria-hidden="true" style="position:absolute;top:0;left:0;width:1px;height:1px"></span>
+
+<header class="header">
+  <a class="logo appear appear--scale" style="--d:0.08s" href="#top" aria-label="Blatboy.dev">
+    <svg class="logo-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M9.5 8L6 12l3.5 4M14.5 8L18 12l-3.5 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>Blatboy<span class="logo-suffix">.dev</span></span>
+  </a>
+
+  <nav id="site-nav" aria-label="Основная навигация">
+    <a class="nav-link appear appear--scale" style="--d:0.16s" href="#projects">Работы</a>
+    <a class="nav-link appear appear--soft"  style="--d:0.28s" href="#services">Услуги</a>
+    <a class="nav-link appear appear--scale" style="--d:0.40s" href="#process">Как работаю</a>
+    <a class="nav-link appear appear--soft"  style="--d:0.52s" href="#faq">Вопросы</a>
+  </nav>
+
+  <a class="btn btn-solid header-cta appear appear--scale" style="--d:0.34s" href="#contact">Обсудить проект</a>
+
+  <button class="burger appear appear--scale" style="--d:0.34s" type="button"
+          aria-controls="site-nav" aria-expanded="false" aria-label="Открыть меню">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="page" id="top">
+
+  <main class="hero">
+    <div class="hero-copy">
+
+      <span class="badge appear appear--pop" style="--d:0.22s">
+        <svg class="badge-star" width="18" height="20" viewBox="0 0 24 24" fill="#ffa33a" aria-hidden="true">
+          <path d="M12 2.6C12.55 2.6 12.88 3.15 13.08 4.7c.62 4.7 1.52 5.6 6.22 6.22 1.55.2 2.1.53 2.1 1.08s-.55.88-2.1 1.08c-4.7.62-5.6 1.52-6.22 6.22-.2 1.55-.53 2.1-1.08 2.1s-.88-.55-1.08-2.1c-.62-4.7-1.52-5.6-6.22-6.22C3.15 12.88 2.6 12.55 2.6 12s.55-.88 2.1-1.08c4.7-.62 5.6-1.52 6.22-6.22C11.12 3.15 11.45 2.6 12 2.6Z"/>
+        </svg>
+        Веб-разработка и iOS
+      </span>
+
+      <h1>
+        <span class="headline-line"><span class="appear appear--mask" style="--d:0.42s">Сайты и <em>приложения</em></span></span>
+        <span class="headline-line"><span class="appear appear--mask" style="--d:0.62s">от макета до запуска.</span></span>
+      </h1>
+
+      <p class="lede appear appear--soft" style="--d:0.82s">
+        Лендинг за 3-5 дней: дизайн, вёрстка, форма заявок, домен и хостинг. Всё делает один человек.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-solid appear appear--btn" style="--d:0.96s" href="#contact">Обсудить проект</a>
+        <a class="btn btn-ghost hero-ghost appear appear--side" style="--d:1.10s" href="#projects">Смотреть работы</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="stats">
+    <span class="stat appear appear--stat" style="--d:1.12s">
+      <svg class="stat-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <defs>
+          <linearGradient id="wf-a" x1="3" y1="2" x2="14" y2="22" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ffffff" stop-opacity="0.38"/>
+            <stop offset="1" stop-color="#3a3a3a" stop-opacity="0.62"/>
+          </linearGradient>
+          <linearGradient id="wf-b" x1="3" y1="2" x2="14" y2="22" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3a3a3a" stop-opacity="0.38"/>
+            <stop offset="1" stop-color="#ffa33a" stop-opacity="0.72"/>
+          </linearGradient>
+        </defs>
+        <rect x="3.4" y="2.6" width="7.2" height="18.8" rx="3.6" fill="url(#wf-a)"/>
+        <rect x="13.4" y="2.6" width="7.2" height="18.8" rx="3.6" fill="url(#wf-b)"/>
+        <rect x="9.2" y="10.9" width="5.6" height="2.2" rx="1.1" fill="#4a4a4a"/>
+      </svg>
+      Веб и iOS
+    </span>
+
+    <span class="stat appear appear--stat" style="--d:1.28s">
+      <svg class="stat-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="9.4" fill="none" stroke="#e8e8e8" stroke-width="1.7"/>
+        <path d="M12 6.6V12l3.6 2.2" fill="none" stroke="#ffa33a" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Лендинг за 3-5 дней
+    </span>
+
+    <span class="stat appear appear--stat" style="--d:1.44s">
+      <svg class="stat-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3.2 11.4c0-4.2 3.9-7.4 8.8-7.4s8.8 3.2 8.8 7.4-3.9 7.4-8.8 7.4c-.9 0-1.8-.1-2.6-.3l-4.6 2 1.2-3.5c-1.7-1.3-2.8-3.3-2.8-5.6Z"
+              fill="none" stroke="#e8e8e8" stroke-width="1.7" stroke-linejoin="round"/>
+        <circle cx="8.6" cy="11.4" r="1.15" fill="#ffa33a"/>
+        <circle cx="12" cy="11.4" r="1.15" fill="#ffa33a"/>
+        <circle cx="15.4" cy="11.4" r="1.15" fill="#ffa33a"/>
+      </svg>
+      Отвечаю в течение дня
+    </span>
+  </footer>
+
+</div>
+
+<div class="below">
+
+  <!-- ------------------------------------------------------------ работы -->
+  <section class="section" id="projects">
+    <div class="wrap">
+      <h2 class="reveal">Работы</h2>
+      <p class="section-intro reveal">Два проекта, доведённых до рабочего состояния. Ниже — что было нужно и что я сделал.</p>
+
+      <article class="case reveal">
+        <div class="case-body">
+          <span class="case-kicker">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="6" y="2.5" width="12" height="19" rx="3" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            iOS-приложение
+          </span>
+          <h3>Tether</h3>
+          <p>Приложение для пары. Два телефона соединяются по короткому коду и показывают расстояние между собой, счётчик «сколько вы вместе» и виджет на главном экране.</p>
+          <p>Самое сложное было не в интерфейсе, а в сети: на реальных устройствах приложение стабильно отваливалось по таймауту. Причина оказалась в переиспользовании соединений URLSession — сеть молча роняла простаивающие соединения. Собрал диагностику прямо в приложении, нашёл причину и починил. Работает на двух живых айфонах.</p>
+          <div class="tags">
+            <span class="tag">SwiftUI</span>
+            <span class="tag">Firebase Firestore</span>
+            <span class="tag">Cloudflare Workers</span>
+            <span class="tag">WidgetKit</span>
+          </div>
         </div>
-    </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container-lg">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="hero-eyebrow">Личный сайт-визитка веб-разработчика</div>
-                    <h1>Я — веб-разработчик,<br>создаю сайты с&nbsp;AI</h1>
-                    <p class="lead">Делаю современные лендинги и сайты с помощью AI-инструментов. Адаптивный дизайн, плавные анимации и быстрая загрузка — от идеи до готового сайта за пару дней.</p>
-                    <a href="#contact" class="btn btn-primary btn-lg">Связаться со мной</a>
-                </div>
-                <div class="col-lg-6 mt-5 mt-lg-0">
-                    <svg class="hero-illustration" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg">
-                        <ellipse cx="240" cy="370" rx="180" ry="20" fill="#FBFBFB"/>
-                        <rect x="70" y="120" width="340" height="210" rx="16" fill="#171717"/>
-                        <rect x="86" y="136" width="308" height="178" rx="4" fill="#fff"/>
-                        <rect x="106" y="156" width="140" height="10" rx="5" fill="#E44927"/>
-                        <rect x="106" y="178" width="200" height="8" rx="4" fill="#eee"/>
-                        <rect x="106" y="196" width="180" height="8" rx="4" fill="#eee"/>
-                        <rect x="106" y="214" width="210" height="8" rx="4" fill="#eee"/>
-                        <rect x="106" y="240" width="90" height="34" rx="17" fill="#E44927"/>
-                        <circle cx="240" cy="330" r="6" fill="#171717"/>
-                        <rect x="180" y="330" width="120" height="8" rx="4" fill="#171717"/>
-                        <circle cx="380" cy="90" r="46" fill="#F59E0B" opacity="0.15"/>
-                        <circle cx="380" cy="90" r="30" fill="#F59E0B" opacity="0.25"/>
-                        <circle cx="60" cy="70" r="26" fill="#E44927" opacity="0.12"/>
-                        <path d="M340 200 l14 14 -14 14" stroke="#E44927" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M330 240 l-14 14 14 14" stroke="#E44927" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(30,0)"/>
-                    </svg>
-                </div>
-            </div>
+        <div class="case-media">
+          <!-- TODO: заменить панель на реальные скриншоты экранов приложения
+               (assets/tether-home.png, assets/tether-pairing.png) в рамке телефона. -->
+          <dl class="stack-panel">
+            <div class="stack-row"><dt>Интерфейс</dt><dd>SwiftUI</dd></div>
+            <div class="stack-row"><dt>Данные</dt><dd>Firestore через REST</dd></div>
+            <div class="stack-row"><dt>Свой релей</dt><dd>Cloudflare Workers</dd></div>
+            <div class="stack-row"><dt>Виджет</dt><dd>WidgetKit, App Group</dd></div>
+            <div class="stack-row"><dt>Состояние</dt><dd>Работает на устройствах</dd></div>
+          </dl>
         </div>
-    </section>
+      </article>
 
-    <!-- Steps -->
-    <section class="steps-section">
-        <div class="container-lg">
-            <h2 class="text-center mb-5">Как я работаю</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="step-box">
-                        <div class="step-icon">1</div>
-                        <p class="h5">Обсуждаем задачу и цели сайта</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="step-box">
-                        <div class="step-icon">2</div>
-                        <p class="h5">Разрабатываю дизайн и структуру</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="step-box">
-                        <div class="step-icon">3</div>
-                        <p class="h5">Запускаю готовый сайт и вношу правки</p>
-                    </div>
-                </div>
-            </div>
+      <article class="case case--flip reveal">
+        <div class="case-body">
+          <span class="case-kicker">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2.5" y="4.5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M2.5 8.6h19" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+            Лендинг
+          </span>
+          <h3>NordBuild</h3>
+          <p>Сайт строительной компании: первый экран с заявкой, услуги, проекты и контакты. Тёмная тема, адаптив под телефон, переключатель языков.</p>
+          <p>Одностраничник, который можно отправить клиенту как визитку: всё нужное помещается в один скролл, а заявка уходит на почту без бэкенда и без платного хостинга.</p>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Адаптив</span>
+          </div>
+          <a class="case-link" href="https://blatboy777.github.io/nordbuild-landing/" target="_blank" rel="noopener">
+            Открыть сайт
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
-    </section>
 
-    <!-- Why me -->
-    <section id="why" class="split-section">
-        <div class="container-lg">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <svg class="split-illustration" viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="200" cy="180" r="150" fill="#FBFBFB"/>
-                        <rect x="120" y="90" width="160" height="130" rx="12" fill="#171717"/>
-                        <rect x="132" y="102" width="136" height="90" rx="4" fill="#fff"/>
-                        <rect x="145" y="115" width="60" height="8" rx="4" fill="#E44927"/>
-                        <rect x="145" y="130" width="100" height="6" rx="3" fill="#eee"/>
-                        <rect x="145" y="142" width="80" height="6" rx="3" fill="#eee"/>
-                        <rect x="145" y="154" width="90" height="6" rx="3" fill="#eee"/>
-                        <rect x="170" y="220" width="60" height="14" rx="4" fill="#404040"/>
-                        <rect x="150" y="234" width="100" height="10" rx="5" fill="#404040"/>
-                        <circle cx="200" cy="260" r="34" fill="#F59E0B"/>
-                        <circle cx="192" cy="252" r="5" fill="#171717"/>
-                        <circle cx="208" cy="252" r="5" fill="#171717"/>
-                        <path d="M188 268 q12 10 24 0" stroke="#171717" stroke-width="4" fill="none" stroke-linecap="round"/>
-                        <rect x="150" y="294" width="100" height="40" rx="20" fill="#E44927"/>
-                        <circle cx="330" cy="90" r="22" fill="#E44927" opacity="0.15"/>
-                        <circle cx="70" cy="260" r="18" fill="#F59E0B" opacity="0.2"/>
-                    </svg>
-                </div>
-                <div class="col-lg-6 mt-4 mt-lg-0">
-                    <h2>Почему я?</h2>
-                    <p>Использую AI для быстрой и качественной разработки — то, что раньше занимало недели, теперь делается за часы. Работаю на MacBook Pro, что даёт мощный и стабильный рабочий процесс. Готовлю портфолио для работы с международными клиентами: уровень английского B1, изучаю испанский.</p>
-                </div>
+        <div class="case-media">
+          <div class="shot-pair">
+            <div class="shot-desktop">
+              <img src="assets/nordbuild-desktop.png" width="1200" height="820" loading="lazy"
+                   alt="Первый экран сайта NordBuild на десктопе">
             </div>
+            <div class="shot-mobile">
+              <img src="assets/nordbuild-mobile.png" width="390" height="844" loading="lazy"
+                   alt="Тот же сайт NordBuild на экране телефона">
+            </div>
+          </div>
         </div>
-    </section>
+      </article>
+    </div>
+  </section>
 
-    <!-- Stats -->
-    <section id="stats" class="stats-section">
-        <div class="container-lg">
-            <div class="row g-4">
-                <div class="col-6 col-lg-3">
-                    <div class="stat-box">
-                        <div class="digit">3+</div>
-                        <p class="h5">Готовых проекта</p>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <div class="stat-box">
-                        <div class="digit">3</div>
-                        <p class="h5">Языка сайта: RU / EN / ES</p>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <div class="stat-box">
-                        <div class="digit">100%</div>
-                        <p class="h5">Адаптивный дизайн</p>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3">
-                    <div class="stat-box">
-                        <div class="digit">24/7</div>
-                        <p class="h5">На связи в Telegram</p>
-                    </div>
-                </div>
-            </div>
+  <!-- ------------------------------------------------------------ услуги -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <h2 class="reveal">Что я делаю</h2>
+      <p class="section-intro reveal">Беру задачу целиком: от структуры и текста до домена и почты для заявок.</p>
+
+      <div class="bento">
+        <div class="cell cell--wide cell--glow reveal">
+          <svg class="cell-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2.5" y="3.5" width="19" height="17" rx="3" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M2.5 8.5h19M6.6 13h7.2M6.6 16.4h4.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <h3>Лендинги</h3>
+          <p>Одностраничный сайт под конкретную задачу: рассказать о продукте и собрать заявки. Первый экран, блок доверия, форма, аналитика. Обычно 3-5 дней от старта до запуска.</p>
         </div>
-    </section>
 
-    <!-- Services -->
-    <section id="services" class="services-section">
-        <div class="container-lg">
-            <h2>Услуги, с которыми я могу помочь</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="icon-wrap"><i class="bi bi-layout-text-window"></i></div>
-                        <h3>Лендинги</h3>
-                        <p>Современные одностраничные сайты для бизнеса, продуктов и услуг. Адаптивный дизайн, быстрая загрузка.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="icon-wrap"><i class="bi bi-window-stack"></i></div>
-                        <h3>Многостраничные сайты</h3>
-                        <p>Полноценные сайты с несколькими страницами: главная, о компании, услуги, контакты, блог.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="icon-wrap"><i class="bi bi-lightning-charge"></i></div>
-                        <h3>Доработка сайтов</h3>
-                        <p>Добавлю новые секции, изменю дизайн, оптимизирую скорость загрузки вашего существующего сайта.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="cell cell--grid reveal">
+          <svg class="cell-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2.5" y="3.5" width="19" height="17" rx="3" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M9 3.5v17" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
+          <h3>Многостраничные сайты</h3>
+          <p>Главная, услуги, о компании, контакты, блог. Общая навигация и единый стиль на всех страницах.</p>
         </div>
-    </section>
 
-    <!-- Projects -->
-    <section id="projects" class="projects-section">
-        <div class="container-lg">
-            <h2>Мои проекты</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="project-card">
-                        <div class="project-image">🏗️</div>
-                        <div class="project-content">
-                            <h3>NordBuild</h3>
-                            <p>Сайт строительной компании. Современный дизайн, адаптивная вёрстка, многоязычность.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">HTML</span>
-                                <span class="project-tag">CSS</span>
-                                <span class="project-tag">Responsive</span>
-                            </div>
-                            <a href="https://blatboy777.github.io/nordbuild-landing/" target="_blank" class="project-link">Посмотреть сайт →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="project-card">
-                        <div class="project-image">💼</div>
-                        <div class="project-content">
-                            <h3>Портфолио</h3>
-                            <p>Личный сайт-портфолио с поддержкой трёх языков, плавной анимацией и мобильным меню.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">HTML</span>
-                                <span class="project-tag">CSS</span>
-                                <span class="project-tag">JS</span>
-                                <span class="project-tag">i18n</span>
-                            </div>
-                            <a href="#" class="project-link">Посмотреть сайт →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="project-card">
-                        <div class="project-image">🚀</div>
-                        <div class="project-content">
-                            <h3>Следующий проект</h3>
-                            <p>Готовлю новый проект для портфолио с использованием современных технологий.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">React</span>
-                                <span class="project-tag">Coming Soon</span>
-                            </div>
-                            <span class="project-link" style="opacity:0.5;cursor:default">Скоро →</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="cell reveal">
+          <svg class="cell-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="6" y="2.5" width="12" height="19" rx="3" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M10.6 5.4h2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <h3>Приложения для iPhone</h3>
+          <p>Приложение на SwiftUI со своим бэкендом и виджетом. Как Tether выше.</p>
         </div>
-    </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="faq-section">
-        <div class="container-lg">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2>FAQ</h2>
-                    <p class="opacity-7 mb-4">Частые вопросы о разработке сайта</p>
-                    <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Сколько стоит сайт?</button>
-                            </h3>
-                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">Стоимость зависит от объёма: одностраничный лендинг дешевле многостраничного сайта. Напишите мне — обсудим задачу и посчитаем точную цену.</div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Сколько времени занимает разработка?</button>
-                            </h3>
-                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">Простой лендинг — от 1 до 3 дней благодаря использованию AI-инструментов. Сложные многостраничные проекты обсуждаются индивидуально.</div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">На чём написаны сайты?</button>
-                            </h3>
-                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">HTML, CSS и JavaScript — без лишних фреймворков, чтобы сайт был быстрым и лёгким. При необходимости подключаю Bootstrap для сложной вёрстки.</div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Вносите правки после сдачи?</button>
-                            </h3>
-                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">Да, небольшие правки после сдачи — бесплатно. Более крупные доработки обсуждаем отдельно.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-5 mt-lg-0 d-none d-lg-block">
-                    <svg class="split-illustration ms-auto d-block" viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="200" cy="180" r="150" fill="#FBFBFB"/>
-                        <rect x="110" y="70" width="180" height="220" rx="16" fill="#fff" stroke="#171717" stroke-width="6"/>
-                        <circle cx="200" cy="110" r="22" fill="#E44927"/>
-                        <text x="200" y="119" font-size="24" fill="#fff" text-anchor="middle" font-weight="700">?</text>
-                        <rect x="135" y="150" width="130" height="8" rx="4" fill="#eee"/>
-                        <rect x="135" y="168" width="110" height="8" rx="4" fill="#eee"/>
-                        <rect x="135" y="196" width="130" height="8" rx="4" fill="#eee"/>
-                        <rect x="135" y="214" width="90" height="8" rx="4" fill="#eee"/>
-                        <rect x="135" y="242" width="130" height="8" rx="4" fill="#eee"/>
-                        <rect x="135" y="260" width="70" height="8" rx="4" fill="#eee"/>
-                        <circle cx="320" cy="260" r="30" fill="#F59E0B" opacity="0.2"/>
-                        <circle cx="80" cy="100" r="20" fill="#E44927" opacity="0.12"/>
-                    </svg>
-                </div>
-            </div>
+        <div class="cell cell--wide reveal">
+          <svg class="cell-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M13 2.5L4.5 13.4h6.2l-1.7 8.1L18.5 10h-6.2l.7-7.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+          <h3>Доработка того, что уже есть</h3>
+          <p>Добавить секцию, переделать первый экран, починить вёрстку на телефоне, ускорить загрузку. Работаю с чужим кодом, переписывать всё с нуля не заставляю.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact-info-section">
-        <div class="container-lg">
-            <h2>Связаться со мной</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="contact-info-box">
-                        <div class="contact-info-icon"><i class="bi bi-github"></i></div>
-                        <p class="h5">GitHub</p>
-                        <a href="https://github.com/blatboy777" target="_blank">github.com/blatboy777</a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="contact-info-box">
-                        <div class="contact-info-icon"><i class="bi bi-envelope"></i></div>
-                        <p class="h5">Почта</p>
-                        <a href="mailto:nov76246@gmail.com">nov76246@gmail.com</a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="contact-info-box">
-                        <div class="contact-info-icon"><i class="bi bi-telegram"></i></div>
-                        <p class="h5">Telegram</p>
-                        <a href="https://t.me/Blatboy_777" target="_blank">@Blatboy_777</a>
-                    </div>
-                </div>
-            </div>
+  <!-- -------------------------------------------------------- как работаю -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <h2 class="reveal">Как проходит работа</h2>
+      <p class="section-intro reveal">Три шага, и между ними вы всегда видите, что получается.</p>
 
-            <div class="contact-form-wrap">
-                <form class="contact-form" action="https://formspree.io/f/xvkpkzpk" method="POST">
-                    <input type="text" name="name" placeholder="Ваше имя" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <textarea name="message" placeholder="Сообщение" required></textarea>
-                    <button type="submit">Отправить сообщение</button>
-                </form>
-            </div>
+      <div class="rail reveal">
+        <div class="step">
+          <div class="step-index">01</div>
+          <h3>Разбираем задачу</h3>
+          <p>Списываемся или созваниваемся: кто ваш клиент, что должен делать сайт, какие есть тексты, фото и логотип. На выходе — понятный список того, что делаем.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container-lg">
-            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center">
-                <div>
-                    <div class="footer-brand">Blatboy.dev</div>
-                    <div class="opacity-75 mb-3">Создаю современные сайты с помощью AI</div>
-                    <div class="footer-social">
-                        <a href="https://github.com/blatboy777" target="_blank"><i class="bi bi-github"></i></a>
-                        <a href="https://t.me/Blatboy_777" target="_blank"><i class="bi bi-telegram"></i></a>
-                        <a href="mailto:nov76246@gmail.com"><i class="bi bi-envelope"></i></a>
-                    </div>
-                </div>
-                <div class="mt-4 mt-sm-0">&copy; 2026 Blatboy</div>
-            </div>
-            <div class="footer-bottom">Создано с помощью Vibe Coding.</div>
+        <div class="step">
+          <div class="step-index">02</div>
+          <h3>Показываю первый экран</h3>
+          <p>Собираю структуру и первый экран, показываю в браузере, а не картинкой. Правим, пока не совпадёт с тем, что вы имели в виду. Только потом делаю остальное.</p>
         </div>
-    </footer>
+        <div class="step">
+          <div class="step-index">03</div>
+          <h3>Запускаю</h3>
+          <p>Верстаю до конца, подключаю форму заявок, домен и хостинг, проверяю на телефоне. Передаю доступы. Мелкие правки после сдачи бесплатно.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
-            });
+  <!-- ------------------------------------------------------------ вопросы -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <h2 class="reveal">Частые вопросы</h2>
+      <p class="section-intro reveal">Если чего-то здесь нет, спросите в Telegram — отвечу.</p>
+
+      <div class="faq reveal">
+        <details>
+          <summary>Сколько это стоит?</summary>
+          <div class="faq-body">Зависит от объёма: одностраничник дешевле многостраничного сайта, приложение считается отдельно. Напишите пару слов о задаче — назову точную цену до начала работы, а не по ходу.</div>
+        </details>
+        <details>
+          <summary>Сколько времени займёт?</summary>
+          <div class="faq-body">Простой лендинг — 3-5 дней. Многостраничный сайт — от недели. Приложение обсуждаем отдельно: там срок сильно зависит от того, нужен ли свой сервер.</div>
+        </details>
+        <details>
+          <summary>Что нужно от меня?</summary>
+          <div class="faq-body">Рассказать про бизнес и клиентов, дать тексты и фото, если они есть. Если текстов нет — напишу сам, вы проверите. Логотип и домен на старте не обязательны.</div>
+        </details>
+        <details>
+          <summary>На чём вы делаете сайты?</summary>
+          <div class="faq-body">HTML, CSS и JavaScript без тяжёлых конструкторов и лишних библиотек, поэтому страницы грузятся быстро. Приложения на SwiftUI. Код остаётся у вас, привязки ко мне нет.</div>
+        </details>
+        <details>
+          <summary>А правки после сдачи?</summary>
+          <div class="faq-body">Мелкие — поменять текст, номер, фото, поправить отступ — бесплатно. Новые секции и крупные переделки считаем отдельно, но по той же ставке.</div>
+        </details>
+        <details>
+          <summary>Кто будет со мной работать?</summary>
+          <div class="faq-body">Я. Не агентство и не команда: вы общаетесь напрямую с тем, кто делает сайт, без менеджеров и пересказов.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ----------------------------------------------------------- контакты -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+
+        <div class="reveal">
+          <h2>Обсудим проект</h2>
+          <p class="section-intro" style="margin-bottom:0">Напишите, что нужно сделать. Отвечу в течение дня и назову срок и цену до начала работы.</p>
+
+          <div class="contact-list">
+            <a class="contact-row" href="https://t.me/Blatboy_777" target="_blank" rel="noopener">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M21 4.5L2.8 11.3l5.1 1.7 1.9 5.6 2.7-3.3 4.6 3.4L21 4.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                <path d="M7.9 13l9.4-6.4-6 7.7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              </svg>
+              @Blatboy_777
+              <span>Telegram</span>
+            </a>
+            <a class="contact-row" href="mailto:nov76246@gmail.com">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M3.4 6.2l8.6 6 8.6-6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              </svg>
+              nov76246@gmail.com
+              <span>Почта</span>
+            </a>
+            <a class="contact-row" href="https://github.com/blatboy777" target="_blank" rel="noopener">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9.3 20.5c-4.6 1.4-4.6-2.4-6.4-2.9m12.8 5.4v-3.6c0-1 .1-1.5-.5-2 2.8-.3 5.4-1.4 5.4-6a4.7 4.7 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.3s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C7.1 4.6 6 4.9 6 4.9a4.3 4.3 0 0 0-.1 3.3A4.7 4.7 0 0 0 4.5 11.5c0 4.6 2.6 5.7 5.4 6-.4.4-.5.9-.5 1.5v3.9"
+                      stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              github.com/blatboy777
+              <span>Код</span>
+            </a>
+          </div>
+        </div>
+
+        <form class="form reveal" action="https://formspree.io/f/xvkpkzpk" method="POST">
+          <div class="field">
+            <label for="f-name">Как вас зовут</label>
+            <input id="f-name" type="text" name="name" placeholder="Имя" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Почта или ник в Telegram</label>
+            <input id="f-email" type="text" name="email" placeholder="Куда вам ответить" required>
+          </div>
+          <div class="field">
+            <label for="f-message">Что нужно сделать</label>
+            <textarea id="f-message" name="message" placeholder="Пара предложений о задаче: что за бизнес, есть ли сайт сейчас, к какому сроку нужно." required></textarea>
+          </div>
+          <p class="form-note">Отправляя форму, вы соглашаетесь, что я использую эти данные только чтобы ответить вам.</p>
+          <button class="btn btn-solid" type="submit">Отправить</button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>Blatboy.dev — сайты и мобильные приложения</div>
+      <div>
+        <a href="https://t.me/Blatboy_777" target="_blank" rel="noopener">Telegram</a> ·
+        <a href="https://github.com/blatboy777" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="mailto:nov76246@gmail.com">Почта</a>
+      </div>
+      <div>&copy; 2026</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  // Hero clip: desktop only, motion allowed only. Otherwise the poster stands in.
+  var video = document.querySelector('.hero-video');
+  if (video) {
+    var bigEnough = window.matchMedia('(min-width: 901px)').matches;
+    var motionOk = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (bigEnough && motionOk) {
+      video.src = video.getAttribute('data-src');
+      var playing = video.play();
+      // Autoplay can still be refused; the poster is already in place if so.
+      if (playing && typeof playing.catch === 'function') { playing.catch(function () {}); }
+    }
+  }
+
+  var appears = Array.prototype.slice.call(document.querySelectorAll('.appear'));
+  var photo = document.querySelector('.hero-photo');
+  var animated = photo ? appears.concat([photo]) : appears;
+
+  function markIn(el) { el.classList.add('is-in'); }
+
+  animated.forEach(function (el) {
+    el.addEventListener('animationend', function () { markIn(el); }, { once: true });
+  });
+
+  // If nothing is actually animating two frames in, show everything anyway.
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      var live = animated.some(function (el) {
+        if (typeof el.getAnimations !== 'function') return false;
+        return el.getAnimations().some(function (a) {
+          return a.playState === 'running' || a.playState === 'finished';
         });
+      });
+      if (!live) animated.forEach(markIn);
+    });
+  });
 
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                if (scrollY >= section.offsetTop - 200) current = section.getAttribute('id');
-            });
-            navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-            });
-        });
-    </script>
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    reveals.forEach(function (el) { revealObserver.observe(el); });
+
+    // Failsafe: if the observer never delivers, drop the hidden state entirely
+    // rather than leaving the page below the fold invisible.
+    setTimeout(function () {
+      var shown = reveals.some(function (el) { return el.classList.contains('in-view'); });
+      if (!shown) document.documentElement.classList.add('reveal-off');
+    }, 2500);
+
+    // Header picks up its backdrop once the top of the page scrolls away.
+    var header = document.querySelector('.header');
+    new IntersectionObserver(function (entries) {
+      header.classList.toggle('is-stuck', !entries[0].isIntersecting);
+    }).observe(document.getElementById('top-sentinel'));
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in-view'); });
+  }
+
+  var burger = document.querySelector('.burger');
+  var nav = document.getElementById('site-nav');
+
+  function setMenu(open) {
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+  }
+
+  burger.addEventListener('click', function () {
+    setMenu(!document.body.classList.contains('menu-open'));
+  });
+
+  nav.addEventListener('click', function (e) {
+    if (e.target.closest('a')) setMenu(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setMenu(false);
+  });
+
+  var wide = window.matchMedia('(min-width: 901px)');
+  wide.addEventListener('change', function (e) {
+    if (e.matches) setMenu(false);
+  });
+})();
+</script>
+
 </body>
 </html>
